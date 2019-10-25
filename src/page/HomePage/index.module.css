@@ -1,0 +1,52 @@
+.content{
+
+}
+.content:hover {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    border-color: #eee;
+    transition: all 0.2s ease-in-out;
+}
+.orange{
+    font-family: Comic Sans MS;
+    color:#F1831D;
+
+}
+.menuTitle{
+    font-family:Comic Sans MS;
+    font-size:30px;
+    color: #ffffff;
+    text-align: center;
+}
+.subMenu{
+    font-family:Comic Sans MS;
+    font-size:18px;
+    color: #ffffff;
+}
+.reading{
+    font-family:Comic Sans MS;
+    color: #E41A6A;
+    cursor:pointer
+}
+.reading:hover{
+    text-decoration:underline;
+    transition: all 0.2s ease-in-out;
+}
+.math{
+    font-family:Comic Sans MS;
+    color:#F1831D;
+    cursor:pointer
+
+}
+.math:hover{
+    text-decoration:underline;
+    transition: all 0.2s ease-in-out;
+}
+.science{
+    font-family:Comic Sans MS;
+    color: #2EAFB0;
+    cursor:pointer
+}
+.science:hover{
+    text-decoration:underline;
+    transition: all 0.2s ease-in-out;
+}

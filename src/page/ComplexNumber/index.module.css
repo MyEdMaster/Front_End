@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css?family=Rajdhani&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@font-face {
+    font-family:'Rajdhani', sans-serif;
+    src: url('https://fonts.googleapis.com/css?family=Rajdhani&display=swap')
+}
+@font-face {
+    font-family:'Roboto', sans-serif;
+    src: url('https://fonts.googleapis.com/css?family=Roboto&display=swap')
+}
+
+.font{
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 30px;
+    font-weight: bolder;
+    text-align: center;
+}
+.float{
+    position:fixed;
+    left:0px;
+    top:210px;
+    z-index: 999;
+}
+
+.menubar{
+    cursor: pointer;
+    border-style:solid;
+    border-width:0 0 1px 5px;
+    border-color: white white #7e57c2 white;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 24px;
+    font-weight: bolder;
+    padding: 10px 0;
+
+}
+.menubar:hover{
+    border-style:solid;
+    border-width:0 0 1px 5px;
+    border-color: #F1831D;
+
+    color: #F1831D;
+    transition: all 0.2s ease-in-out;
+
+}
+.selectmenubar{
+    cursor: pointer;
+    border-style:solid;
+    border-width:0 0 1px 5px;
+    color:#F1831D;
+    border-color: #F1831D;
+    padding: 10px 0;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 24px;
+}

@@ -1,0 +1,28 @@
+.body{
+    background: #ffffcc;
+    font-family: "Georgia", serif;
+}
+.font{
+    font-family: Impact;
+    font-size:22px;
+    font-weight: bolder;
+    color:white;
+    cursor: pointer;
+}
+.font:hover {
+    background-color: aliceblue;
+    color:#282c34;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    border-color: #61dafb;
+    transition: all 0.2s ease-in-out;
+}
+.next {
+    color:blue;
+    margin-top: 30px;
+    font-family: "Great Vibes", cursive;
+    font-size: 20px;
+}
+.next:hover {
+    transition: font-weight 0.5s;
+    font-weight: bold;
+}

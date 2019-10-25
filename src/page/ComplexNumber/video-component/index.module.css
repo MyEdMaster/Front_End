@@ -1,0 +1,13 @@
+
+.border{
+
+    border-style:solid;
+    border-width:3px;
+    border-color: #F1831D;
+}
+.btn{
+    font-family: Comic Sans MS;
+    font-size: 12px;
+    border-radius: 5px;
+    text-align: center;
+}

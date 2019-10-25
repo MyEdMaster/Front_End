@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css?family=Rajdhani&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@font-face {
+    font-family:'Rajdhani', sans-serif;
+    src: url('https://fonts.googleapis.com/css?family=Rajdhani&display=swap')
+}
+@font-face {
+    font-family:'Roboto', sans-serif;
+    src: url('https://fonts.googleapis.com/css?family=Roboto&display=swap')
+}
+
+.body{
+    background: #e8eaf6;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    font-variant: normal;
+    line-height: 30px;
+}
+.body2{
+    background: #ffffcc;
+    font-family: 'Rajdhani', sans-serif;
+}
+.title{
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 500;
+    font-variant: normal;
+    line-height: 30px;
+    color: #E71D36;
+}
+.button {
+    display: inline-block;
+    height: 142px;
+    padding: 0;
+    margin: 0;
+    vertical-align: top;
+    width: 100px;
+    opacity: 1;
+    transition: 0.5s;
+}
+.button:hover {background-color: #FFDC00}
+.button1 {
+    cursor: pointer;
+    background-color: #FF0000;
+    border: none;
+    color: white;
+    text-align: center;
+    padding: 0 10px;
+    margin: 0 5px;
+    vertical-align: center;
+    height: 20px;
+    width: auto;
+    opacity: 1;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+.button1:hover {background-color: #FFDC00}
+.a{
+    cursor: pointer;
+    background-color: #54B948;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 5px;
+    border-radius: 20px;
+    transition: 0.5s;
+
+}
+
+.a:hover {
+    background-color: #27AEE3;
+    color: white;
+    padding: 25px 32px;
+    transition: padding 0.5s;
+}
+
+
+
+.fixed {
+    position: fixed;
+    bottom: 70%;
+    right: 0;
+}
+.fixed1{
+    position: fixed;
+    bottom: 40%;
+    right: 0;
+}
+
+.next {
+    cursor: pointer;
+    color:blue;
+    margin-top: 30px;
+    font-family: "Great Vibes", cursive;
+    font-size: 20px;
+}
+.next:hover {
+    transition: font-weight 0.5s;
+    font-weight: bold;
+}
+.border{
+    margin: 20px 0;
+
+    border-style:solid;
+    border-width:3px;
+    border-radius: 20px;
+    border-color: #54B948;
+    padding: 10px 15px;
+}
+.ph{
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 24px;
+    font-weight: bolder;
+
+}
+.pb1{
+    font-family: 'Roboto',sans-serif ;
+    font-weight: bolder;
+    font-size: 24px;
+    color:#54B948;
+    margin-top: 10px;
+    text-align: center;
+}
+.pb2{
+    font-family: 'Roboto',sans-serif ;
+    font-weight: bolder;
+    font-size: 18px;
+    color:#54B948;
+    margin-top: 10px;
+    text-align: left;
+}

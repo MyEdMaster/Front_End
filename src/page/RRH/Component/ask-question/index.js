@@ -12,6 +12,7 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 // const SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
 
+
 recognition.continous = true;
 recognition.interimResults = true;
 recognition.lang = 'en-US';
@@ -57,12 +58,10 @@ export class AskQuestion extends React.Component {
             },
             body:JSON.stringify({"question":value})
         };
-        fetch('http://47.252.83.190:5050/getanswer',option)
+        fetch('http://localhost:5050/getanswer',option)
             .then(response=>response.text())
             .then(answer=>{
                 if (answer.substr(0, 1) === '0'){
-
-
                     this.setState({
                         hints:'Is this the question you want to ask?',
                         answer:answer.substring(1,answer.length),
@@ -72,8 +71,19 @@ export class AskQuestion extends React.Component {
                     handleSyn('Is this the question you want to ask')
                     handleSyn((answer.substring(1,answer.length).replace('?', '.')))
                 }
+                else if(answer.substr(0, 1) === '2'){
+                    this.setState({
+                        hints:'',
+                        answer:'I cannot understand your question, could you ask it in another way'
+                        // answer:answer.substring(1,answer.length),
+                        // tag:0,
+                        // defaultQuestion:answer.substring(1,answer.length)
+                    })
+                    handleSyn('I cannot understand your question, could you ask it in another way')
+                }
                 else{
                     this.setState({
+                        hint:'',
                         answer:answer.substring(1,answer.length)
                     })
                     handleSyn((answer.substring(1,answer.length).replace('?', '.')))
@@ -90,7 +100,7 @@ export class AskQuestion extends React.Component {
             },
             body:JSON.stringify({"question":answer})
         };
-        fetch('http://47.252.83.190:5050/getanswer',newoption)
+        fetch('http://localhost:5050/getanswer',newoption)
             .then(response=>response.text())
             .then(newanswer=>{
                 this.setState({
@@ -204,51 +214,54 @@ export class AskQuestion extends React.Component {
                             <img src={llrh} alt="Little Red Riding Hood" height="71" width="50"/>
                             <span >A QUESTION</span>
                         </div>
+                        {this.state.tag<1?(null):(
+                            <div>
+                                <div className="d-flex justify-content-center align-content-center mt-5 mb-3">
+                                    <div className="flex-grow-1">
+                                        <input
+                                            id='final'
+                                            className={`form-control form-control-lg ${classes.searchInput}`}
+                                            placeholder="Ask your question here"
+                                            style={{
+                                                borderStyle:'solid',
+                                                borderWidth:'1px',
+                                                borderColor:'#81c784',
+                                                borderRadius:'15px',
+                                                fontFamily:'\'Rajdhani\', sans-serif',
+                                                fontSize:'20px',
+                                            }}
+                                            onChange={(e) => {
+                                                const str=e.target.value
+                                                this.setState({
+                                                    redQuestion: str
+                                                });
+                                            }}
+                                        />
+                                    </div>
+                                    <div className="ml-3">
+                                        <MDBBtn
+                                            tag="a" floating color="green" style={{margin:'6px'}}
+                                            onClick={()=>{this.searchAnswer(this.state.redQuestion)}}
+                                        >
+                                            <MDBIcon icon="question" />
+                                        </MDBBtn>
+                                    </div>
+                                    <div className="ml-1">
+                                        <MDBBtn
+                                            tag="a" floating color="purple lighten-2" style={{margin:'6px'}}
+                                            onClick={this.toggleListen}
+                                        >
+                                            <MDBIcon icon="microphone" />
+                                        </MDBBtn>
 
-                        <div className="d-flex justify-content-center align-content-center mt-5 mb-3">
-                            <div className="flex-grow-1">
-                                <input
-                                    id='final'
-                                    className={`form-control form-control-lg ${classes.searchInput}`}
-                                    placeholder="Ask your question here"
-                                    style={{
-                                        borderStyle:'solid',
-                                        borderWidth:'1px',
-                                        borderColor:'#81c784',
-                                        borderRadius:'15px',
-                                        fontFamily:'\'Rajdhani\', sans-serif',
-                                        fontSize:'20px',
-                                    }}
-                                    onChange={(e) => {
-                                        const str=e.target.value
-                                        this.setState({
-                                            redQuestion: str
-                                        });
-                                    }}
-                                />
+                                    </div>
+                                </div>
+                                <div className={classes.speechBorder}>
+                                    <div className={classes.body}>{this.state.speechState}</div>
+                                    <div id='interim'></div>
+                                </div>
                             </div>
-                            <div className="ml-3">
-                                <MDBBtn
-                                    tag="a" floating color="green" style={{margin:'6px'}}
-                                    onClick={()=>{this.searchAnswer(this.state.redQuestion)}}
-                                >
-                                    <MDBIcon icon="question" />
-                                </MDBBtn>
-                            </div>
-                            <div className="ml-1">
-                                <MDBBtn
-                                    tag="a" floating color="purple lighten-2" style={{margin:'6px'}}
-                                    onClick={this.toggleListen}
-                                >
-                                    <MDBIcon icon="microphone" />
-                                </MDBBtn>
-
-                            </div>
-                        </div>
-                        <div className={classes.speechBorder}>
-                            <div className={classes.body}>{this.state.speechState}</div>
-                            <div id='interim'></div>
-                        </div>
+                        )}
 
                         <div className="mt-3">
                             <MDBCard
@@ -272,7 +285,12 @@ export class AskQuestion extends React.Component {
 
                                         <MDBBtn
                                             tag="a" floating className="green"
-                                            onClick={()=>{this.searchAgain(this.state.defaultQuestion)}}
+                                            onClick={()=>{
+                                                this.searchAgain(this.state.defaultQuestion)
+                                                this.setState({
+                                                    tag:1
+                                                })
+                                            }}
                                         >
                                             <MDBIcon icon="check" />
                                         </MDBBtn>
@@ -381,7 +399,12 @@ export class AskQuestion extends React.Component {
 
                                         <MDBBtn
                                             tag="a" floating className="green"
-                                            onClick={()=>{this.searchAgain(this.state.defaultQuestion)}}
+                                            onClick={()=>{
+                                                this.searchAgain(this.state.defaultQuestion)
+                                                this.setState({
+                                                    tag:1
+                                                })
+                                            }}
                                         >
                                             <MDBIcon icon="check" />
                                         </MDBBtn>

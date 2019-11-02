@@ -53,7 +53,7 @@ export class ComplexPage3 extends React.Component {
                 "answer":this.state.value,
             })
         };
-        fetch('http://47.252.83.190:5050/complexnumber',option)
+        fetch('http://localhost:5050/complexnumber',option)
             .then(response=>response.text())
             .then(answer=>{
                 this.setState({

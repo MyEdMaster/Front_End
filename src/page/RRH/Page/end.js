@@ -32,12 +32,12 @@ export class End extends React.Component {
     }
     componentDidMount() {
         const option={
-            method:'POST',
+            method:'GET',
             headers: {
                 'content-type': 'application/json',
             }
         }
-        fetch('http://47.252.83.190:5050/feedback/question',option)
+        fetch('http://localhost:5050/feedback/question',option)
             .then(response=>response.text())
             .then(question=>{
                 this.setState({
@@ -60,7 +60,7 @@ export class End extends React.Component {
             },
             body:JSON.stringify({"answer":value})
         };
-        fetch('http://47.252.83.190:5050/feedback/checkanswer',option)
+        fetch('http://localhost:5050/feedback/checkanswer',option)
             .then(response=>response.text())
             .then(answer=>{
                 if (answer.substr(0, 1) === '0'){

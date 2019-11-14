@@ -20,17 +20,17 @@ export class ComplexPage4 extends React.Component {
             <div>
                 <div className="d-flex align-items-baseline justify-content-center">
                     <div className={classes.title1}>
-                        Analysis
+                        Q & A
                     </div>
                 </div>
                 <MDBRow>
-                    <MDBCol size="3">
+                    <MDBCol size="2">
 
                     </MDBCol>
-                    <MDBCol size="6">
-                        <div className={classes.ph}>
-                            This page will assess the student to determine their proficiency at various topics of knowledge in this module, and adjust its knowledge model based on it.
-                        </div>
+                    <MDBCol size="8">
+                        {/*<div className={classes.ph}>*/}
+                            {/*This page will assess the student to determine their proficiency at various topics of knowledge in this module, and adjust its knowledge model based on it.*/}
+                        {/*</div>*/}
                         <br/>
 
                         <div className={classes.border} style={{borderWidth:'1px'}}>

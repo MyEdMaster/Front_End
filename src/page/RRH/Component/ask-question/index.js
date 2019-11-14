@@ -5,6 +5,9 @@ import llrh from '../../Lib/llrh.jpg';
 import bbw from '../../Lib/bbw.jpg';
 import {MDBBtn, MDBCard,MDBIcon, MDBModal, MDBModalBody} from 'mdbreact';
 import {handleSyn} from "../speech-syn";
+import {cancelSyn} from "../speech-syn";
+import {url} from "../../../../tool/fetch-help";
+import Joyride from 'react-joyride';
 
 //------------------------SPEECH RECOGNITION-----------------------------
 
@@ -19,6 +22,7 @@ recognition.lang = 'en-US';
 
 
 export class AskQuestion extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -32,7 +36,17 @@ export class AskQuestion extends React.Component {
             defaultQuestion:'',
             listening: false,
             speechState:'Click to start...',
-            hints:''
+            hints:'',
+            steps: [
+                {
+                    target: ".rrh",
+                    content: "Click here to ask Little Red Riding Hood questions"
+                },
+                {
+                    target: ".bbw",
+                    content: "Click here to ask Big Bad Wolf questions"
+                }
+            ]
 
         };
         this.toggleListen = this.toggleListen.bind(this)
@@ -44,13 +58,17 @@ export class AskQuestion extends React.Component {
     }
 
     toggle = nr => () => {
+        cancelSyn()
         let modalNumber = 'modal' + nr
         this.setState({
             [modalNumber]: !this.state[modalNumber],
             answer:''
         });
     }
+
+
     searchAnswer=(value)=>{
+        cancelSyn()
         const option={
             method:'POST',
             headers: {
@@ -58,7 +76,7 @@ export class AskQuestion extends React.Component {
             },
             body:JSON.stringify({"question":value})
         };
-        fetch('http://localhost:5050/getanswer',option)
+        fetch(`${url}/getanswer`,option)
             .then(response=>response.text())
             .then(answer=>{
                 if (answer.substr(0, 1) === '0'){
@@ -93,6 +111,7 @@ export class AskQuestion extends React.Component {
             .catch(5000)
     }
     searchAgain=(answer)=>{
+        cancelSyn()
         const newoption={
             method:'POST',
             headers: {
@@ -100,7 +119,7 @@ export class AskQuestion extends React.Component {
             },
             body:JSON.stringify({"question":answer})
         };
-        fetch('http://localhost:5050/getanswer',newoption)
+        fetch(`${url}/getanswer`,newoption)
             .then(response=>response.text())
             .then(newanswer=>{
                 this.setState({
@@ -114,6 +133,7 @@ export class AskQuestion extends React.Component {
     };
     //--------------Speech Recognition--------------
     toggleListen() {
+        cancelSyn()
         this.setState({
             listening: !this.state.listening
         }, this.handleListen)
@@ -194,16 +214,36 @@ export class AskQuestion extends React.Component {
     }
 
     render() {
-        console.log(this.state.redQuestion)
-        console.log(this.state.wolfQuestion)
+        const { steps } = this.state;
+
+
         return (
             <div>
+                <Joyride
+                    steps={steps}
+                    continuous={true}
+                    scrollToFirstStep={true}
+                    scrollToSteps={false}
+                    styles={{
+                        marginTop:'4000px',
+                        options: {
+                            // arrowColor: '#e3ffeb',
+                            // backgroundColor: '#e3ffeb',
+                            //overlayColor: 'rgba(121, 85, 72, 0.1)',
+                            primaryColor: '#7e57c2',
+                            //textColor: '#004a14',
+                            // width: 900,
+                            zIndex: 1000,
+                        }
+                    }}
+                />
+
                 <div className={classes.fixed}>
-                    <button className="button button" onClick={this.toggle(1)}>
+                    <button className="button button rrh" onClick={this.toggle(1)}>
                         <img src={llrh} alt="Little Red Riding Hood" height="142" width="100"/></button>
                 </div>
                 <div className={classes.fixed1}>
-                    <button className="button button" onClick={this.toggle(2)}><img
+                    <button className="button button bbw" onClick={this.toggle(2)}><img
                         src={bbw} alt="Big Bad Wolf" height="142" width="100"/></button>
                 </div>
                 <MDBModal isOpen={this.state.modal1} toggle={this.toggle(1)} centered size="lg">

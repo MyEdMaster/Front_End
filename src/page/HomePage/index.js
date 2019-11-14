@@ -188,10 +188,11 @@ class HomePageReact extends React.Component {
                                     What MyEdMaster Can Do?
                                 </h2>
                                 <p
-                                    className="lead w-responsive mx-auto mb-5"
+                                    className={`${classes.font} lead w-responsive mx-auto mb-5`}
                                     style={{
-                                        fontFamily:'Comic Sans MS',
-                                        color:'#7F2B82'
+                                        color:'#7F2B82',
+                                        fontSize:'22px',
+                                        fontWeight:'bold'
                                     }}
                                 >
                                     MyEdMaster was amazing. There was so much personal attention for each student even when in a group class. The instructors were very personable and helpful!... - Akila P.,
@@ -209,7 +210,10 @@ class HomePageReact extends React.Component {
 
                                             onClick={() => {this.props.history.push('/rrh/cover');}}
                                         >
-                                            Story 1: Little Red Riding Hood.
+                                            <span className={classes.font1}>Story 1: Little Red Riding Hood.</span>
+                                        </p>
+                                        <p className={classes.font2}>
+                                            Expect more in the future...
                                         </p>
                                     </MDBCol>
                                     <MDBCol
@@ -224,7 +228,11 @@ class HomePageReact extends React.Component {
 
                                             onClick={() => {this.props.history.push('/rrh/cover');}}
                                         >
-                                            Learn the complex numbers
+                                            <span className={classes.font1}>Learn the complex numbers</span>
+
+                                        </p>
+                                        <p className={classes.font2}>
+                                            Expect more in the future...
                                         </p>
                                     </MDBCol>
                                     <MDBCol md="4" className={classes.content}>
@@ -235,7 +243,11 @@ class HomePageReact extends React.Component {
 
                                             // onClick={() => {this.props.history.push('/rrh/cover');}}
                                         >
-                                            Play Basketball
+                                            <span className={classes.font1}>Play Basketball</span>
+
+                                        </p>
+                                        <p className={classes.font2}>
+                                            Expect more in the future...
                                         </p>
                                     </MDBCol>
                                 </MDBRow>

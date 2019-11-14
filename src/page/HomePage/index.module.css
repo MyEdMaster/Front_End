@@ -1,5 +1,26 @@
-.content{
-
+@import url('https://fonts.googleapis.com/css?family=Rajdhani&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@font-face {
+    font-family:'Rajdhani', sans-serif;
+    src: url('https://fonts.googleapis.com/css?family=Rajdhani&display=swap')
+}
+@font-face {
+    font-family:'Roboto', sans-serif;
+    src: url('https://fonts.googleapis.com/css?family=Roboto&display=swap')
+}
+.font{
+    font-family: 'Rajdhani', sans-serif;
+}
+.font1{
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+.font2{
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color:#90a4ae
 }
 .content:hover {
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);

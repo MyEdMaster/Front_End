@@ -113,6 +113,10 @@
     font-weight: bolder;
     text-align: center;
 }
+.body2{
+    background: #ffffcc;
+    font-family: 'Rajdhani', sans-serif;
+}
 .high{
     color:#F1831D;
 }
@@ -173,4 +177,20 @@
     font-style: normal;
     font-variant: normal;
     line-height: 30px;
+}
+.fb1{
+    font-family: 'Roboto',sans-serif ;
+    font-weight: bolder;
+    font-size: 24px;
+    color:#7e57c2;
+    margin-top: 10px;
+    text-align: center;
+}
+.fb2{
+    font-family: 'Roboto',sans-serif ;
+    font-weight: bolder;
+    font-size: 18px;
+    color:#7e57c2;
+    margin-top: 10px;
+    text-align: left;
 }

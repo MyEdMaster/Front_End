@@ -5,7 +5,7 @@ import {ComplexHome} from "./Page/home";
 import {ComplexPage1} from "./Page/page1";
 import {ComplexPage2} from "./Page/page2";
 import {ComplexPage3} from "./Page/page3";
-import {ComplexPage4} from "./Page/page4";
+import {ComplexFeedback} from "./Page/feedback";
 
 import classes from './index.module.css'
 
@@ -49,10 +49,10 @@ export class ComplexNumber extends React.Component {
                       Lesson 3: Division
                   </div>
                   <div
-                      className={this.props.location.pathname.indexOf('/complex/page4') > -1? classes.selectmenubar: classes.menubar}
-                      onClick={() => {this.props.history.push('/complex/page4');}}
+                      className={this.props.location.pathname.indexOf('/complex/feedback') > -1? classes.selectmenubar: classes.menubar}
+                      onClick={() => {this.props.history.push('/complex/feedback');}}
                   >
-                      Analysis
+                      Q & A
                   </div>
               </div>
               <Switch>
@@ -74,8 +74,8 @@ export class ComplexNumber extends React.Component {
                       component={routeProps => <ComplexPage3 {...routeProps} />}
                   />
                   <Route
-                      path={`${this.props.match.url}/page4`}
-                      component={routeProps => <ComplexPage4 {...routeProps} />}
+                      path={`${this.props.match.url}/feedback`}
+                      component={routeProps => <ComplexFeedback {...routeProps} />}
                   />
                   <Route
                       path={`${this.props.match.url}/home`}

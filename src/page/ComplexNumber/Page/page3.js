@@ -3,9 +3,29 @@ import {Video} from "../video-component/video";
 import {MDBRow, MDBCol, MDBBtn, MDBCard, MDBIcon,MDBModal,MDBInput, MDBModalFooter} from 'mdbreact'
 import { InlineMath, BlockMath } from 'react-katex';
 import classes from './index.module.css'
-import { useSpeechRecognition } from "react-speech-kit";
-import {SpeakRecogWorksheet} from "./SpeakModuleWorksheet";
+import {url} from "../../../tool/fetch-help";
+import Joyride from 'react-joyride';
+import styled from 'styled-components';
 
+//
+// const Wrapper = styled.div`
+//   align-items: center;
+//   background-color: #ccc;
+//   display: flex;
+//   flex-direction: column;
+//   min-height: 5000px;
+//   justify-content: center;
+//   width: auto;
+// `;
+// const Scroller = styled.div`
+//   background-color: #fff;
+//   box-sizing: border-box;
+//   height: 10000px;
+//   max-width: auto;
+//   margin: 0 auto;
+//   overflow: scroll;
+//   padding: 15px;
+// `;
 
 export class ComplexPage3 extends React.Component {
     constructor(props) {
@@ -23,6 +43,29 @@ export class ComplexPage3 extends React.Component {
             isRight:true,
             finish:false,
             finishText:'',
+
+            steps: [
+                // {
+                //     target: ".test",
+                //     placement: 'bottom',
+                //     content: "Here is a complex number problem"
+                // },
+                {
+                    target: ".problem",
+                    placement: 'bottom',
+                    content: "Here is a complex number problem"
+                },
+                {
+                    target: ".add",
+                    placement: 'bottom',
+                    content: "You can add your own problem"
+                },
+                {
+                    target: ".submit",
+                    placement: 'bottom',
+                    content: "Submit your answer step by step (you could skip first step）"
+                }
+            ]
         };
 
     }
@@ -35,8 +78,8 @@ export class ComplexPage3 extends React.Component {
     handleChange(event) {
 
         this.setState({
-                value: event.target.value,
-            });
+            value: event.target.value,
+        });
     }
     post = ()=>{
         const option={
@@ -53,7 +96,7 @@ export class ComplexPage3 extends React.Component {
                 "answer":this.state.value,
             })
         };
-        fetch('http://localhost:5050/complexnumber',option)
+        fetch(`${url}/complexnumber`,option)
             .then(response=>response.text())
             .then(answer=>{
                 this.setState({
@@ -87,9 +130,28 @@ export class ComplexPage3 extends React.Component {
 
     render() {
 
-        console.log(this.state.answers)
+        const { run,steps } = this.state;
         return (
             <div>
+
+                <Joyride
+                    steps={steps}
+                    continuous={true}
+                    //scrollToFirstStep={true}
+                    scrollToSteps={false}
+                    //showOverlay={false}
+                    //showStepsProgress={true}
+                    //run={run}
+                    styles={{
+                        options: {
+                            primaryColor: '#66bb6a',
+                            zIndex: 1000,
+                        }
+                    }}
+                />
+
+
+
                 <div className="d-flex align-items-baseline justify-content-center">
                     <div className={classes.title1}>
                         COMPLEX NUMBERS:
@@ -252,7 +314,7 @@ export class ComplexPage3 extends React.Component {
                             <tr/><br/>
                         </p>
 
-                        <MDBRow className={classes.border} center>
+                        <MDBRow className={`${classes.border}`} center>
                             <p className={classes.ph2}>
                                 <BlockMath>(3 - 2i)/(-4 - 7i)</BlockMath>
                                 <BlockMath>(5 + 4i)/(2 + i)</BlockMath>
@@ -266,8 +328,9 @@ export class ComplexPage3 extends React.Component {
                         </MDBRow>
                     </MDBCol>
                 </MDBRow>
+                <div className="problem"></div>
                 <MDBRow center>
-                    <MDBCol size="8">
+                    <MDBCol size="8" className="add">
                         <MDBCard
                             size="8"
                             color="blue-grey"
@@ -275,9 +338,12 @@ export class ComplexPage3 extends React.Component {
                             className="py-3 px-3 w-100"
                             style={{boxShadow:'none', borderRadius:'0'}}
                         >
-                            <p className={classes.pb}>Problem</p>
+
+
+                            <p className={`${classes.pb}`}>Problem</p>
+
                             <p
-                                className={classes.pb2}
+                                className={`${classes.pb2}`}
                                 style={{borderStyle:'solid',borderBottomColor:'#9e9e9e', borderWidth:'0 0 1px 0'}}
                             >
                                 Solve the following:
@@ -286,7 +352,7 @@ export class ComplexPage3 extends React.Component {
                                 <tr/><br/>
                             </p>
                             <p
-                                className={classes.pb3}
+                                className={`${classes.pb3} add`}
 
                                 onClick={this.toggle(14)}
                             >
@@ -385,7 +451,13 @@ export class ComplexPage3 extends React.Component {
                                 >Set</MDBBtn>
                             </MDBModalFooter>
                         </MDBModal>
-                        <br/>
+
+                    </MDBCol>
+                </MDBRow>
+                <div className="submit mt-5"></div>
+                <MDBRow center>
+
+                    <MDBCol size="8" >
                         <div className={`${classes.worksheet} px-3 py-3`}>
                             <label className={classes.ws}>
                                 Worksheet
@@ -406,7 +478,7 @@ export class ComplexPage3 extends React.Component {
                                             fontWeight:'bolder'
                                         }}
                                     >
-                                            <span style={{fontWeight:'bold',color:'#388e3c'}}>Step{item[0]-1}</span> &nbsp;{item[1]}
+                                        <span style={{fontWeight:'bold',color:'#388e3c'}}>Step{item[0]-1}</span> &nbsp;{item[1]}
 
                                     </div>
                                 })}
@@ -418,7 +490,7 @@ export class ComplexPage3 extends React.Component {
 
                                         <MDBInput
                                             label={`Step ${this.state.step.toString()}`}
-                                            className="mr-3"
+                                            className="mr-3 submit"
                                             size="sm"
                                             value={this.state.value}
                                             style={this.state.isRight ?{
@@ -459,7 +531,7 @@ export class ComplexPage3 extends React.Component {
                                 </div>
                             ):(
                                 <p className={classes.pb4}>Finished! You got it</p>
-                                )}
+                            )}
 
 
 
@@ -485,8 +557,8 @@ export class ComplexPage3 extends React.Component {
 
                         </div>
                     </MDBCol>
-
                 </MDBRow>
+
                 <MDBRow center>
                     <MDBCol size="2">
                         <MDBBtn

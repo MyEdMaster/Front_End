@@ -2,10 +2,10 @@ import React from 'react';
 import classes from '../../ComplexNumber/Page/index.module.css';
 import classes2 from './index.module.css'
 
-import {AskQuestion} from "../Component/ask-question";
+
 import {MDBBtn, MDBCard, MDBCol, MDBIcon, MDBModalBody, MDBRow} from "mdbreact";
-import {handleSyn} from "../Component/speech-syn";
-import {cancelSyn} from "../Component/speech-syn";
+import {handleSyn} from "../../RRH/Component/speech-syn";
+import {cancelSyn} from "../../RRH/Component/speech-syn";
 import {url} from "../../../tool/fetch-help";
 import Joyride from 'react-joyride';
 
@@ -16,7 +16,7 @@ recognition.continous = true;
 recognition.interimResults = true;
 recognition.lang = 'en-US';
 
-export class End extends React.Component {
+export class ComplexFeedback extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -201,12 +201,11 @@ export class End extends React.Component {
                         scrollToSteps={false}
                         styles={{
                             options: {
-                                primaryColor: '#54B948',
+                                primaryColor: '#F1831D',
                                 zIndex: 1000,
                             }
                         }}
                     />
-                    <AskQuestion/>
 
                     <div className="d-flex align-items-baseline justify-content-center">
                         <div className={classes.title1}>
@@ -219,7 +218,7 @@ export class End extends React.Component {
                         </MDBCol>
                         <MDBCol size="8">
                             <div className={classes2.ph}>
-                                Great! Now you read the story and we have some question for you to answer.
+                                Great! Now you finish the course and we have some question for you to answer.
                             </div>
                             <br/>
 
@@ -240,7 +239,7 @@ export class End extends React.Component {
                                             style={{
                                                 borderStyle:'solid',
                                                 borderWidth:'1px',
-                                                borderColor:'#81c784',
+                                                borderColor:'#7e57c2',
                                                 borderRadius:'15px',
                                                 fontFamily:'\'Rajdhani\', sans-serif',
                                                 fontSize:'22px',
@@ -255,7 +254,7 @@ export class End extends React.Component {
                                     </div>
                                     <div className="ml-3">
                                         <MDBBtn
-                                            tag="a" floating color="green" style={{margin:'6px'}}
+                                            tag="a" floating color="purple" style={{margin:'6px'}}
                                             onClick={()=>{this.searchAnswer(this.state.answer)}}
                                         >
                                             <MDBIcon icon="question" />
@@ -263,7 +262,7 @@ export class End extends React.Component {
                                     </div>
                                     <div className="ml-1">
                                         <MDBBtn
-                                            tag="a" floating color="purple lighten-2" style={{margin:'6px'}}
+                                            tag="a" floating color="orange lighten-2" style={{margin:'6px'}}
                                             onClick={this.toggleListen}
                                         >
                                             <MDBIcon icon="microphone" />
@@ -286,9 +285,9 @@ export class End extends React.Component {
                                         {/*style={{borderStyle:'solid',borderColor:'#54B948',borderWidth:'0 0 0 0'}}*/}
                                         {/*className={classes2.pb1}*/}
                                         {/*>Hints/Feedback</p>*/}
-                                        <p className={classes2.pb2}>{this.state.tag}</p>
+                                        <p className={classes2.fb2}>{this.state.tag}</p>
 
-                                        <p className={classes2.pb2}>{this.state.feedback}</p>
+                                        <p className={classes2.fb2}>{this.state.feedback}</p>
                                     </MDBCard>
                                 </div>
                             </div>
@@ -296,16 +295,7 @@ export class End extends React.Component {
                         </MDBCol>
 
                     </MDBRow>
-                    <div style={{padding:'30px 0 250px 0'}}>
-                        <div
-                            onClick={() => {this.props.history.goBack();}}
-                            className={classes2.a}>&laquo; Previous
-                        </div>
-                        <div
-                            onClick={() => {this.props.history.push('/rrh/cover');}}
-                            className={classes2.a}>Again &raquo;
-                        </div>
-                    </div>
+
                 </div>
             );
         }

@@ -171,7 +171,8 @@
     bottom:20px;
 }
 .body{
-    background: #e8eaf6;
+
+    height: 2000px;
     font-family: 'Rajdhani', sans-serif;
     font-size: 20px;
     font-style: normal;

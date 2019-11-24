@@ -1,7 +1,5 @@
 import React from 'react';
 import classes from './index.module.css';
-import llrh from '../Lib/llrh.jpg';
-import bbw from '../Lib/bbw.jpg';
 import audio from '../Lib/audio/3.mp3'
 import leaving from '../Lib/leaving.jpg'
 import {AskQuestion} from "../Component/ask-question";
@@ -19,6 +17,7 @@ export class Page3 extends React.Component {
     }
 
     render() {
+        console.log(audio)
         return (
             <div className={`${classes.body} align-content-center w-100 h-100 text-center`}>
                 <AskQuestion/>

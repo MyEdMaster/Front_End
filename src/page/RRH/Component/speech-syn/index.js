@@ -21,10 +21,15 @@ export const handleSyn=(text)=>{
     let synth = window.speechSynthesis
     let voices = synth.getVoices();
     let utterThis = new SpeechSynthesisUtterance(text);
-
+    console.log(voices)
     utterThis.pitch = 1;
     utterThis.rate = 1;
-    utterThis.voice = voices[33];
+    for(let i = 0; i < voices.length ; i++) {
+        if(voices[i].name === 'Samantha'){
+            utterThis.voice = voices[i];
+        }
+    }
+    //utterThis.voice = voices[34];
     synth.speak(utterThis);
 
 };

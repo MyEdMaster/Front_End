@@ -51,7 +51,7 @@ export class ComplexFeedback extends React.Component {
                 'content-type': 'application/json',
             }
         }
-        fetch(`${url}/feedback/question`,option)
+        fetch(`${url}/feedback/CN/question`,option)
             .then(response=>response.json())
             .then(question=>{
                 this.setState({
@@ -79,7 +79,7 @@ export class ComplexFeedback extends React.Component {
                 "answer":value
             })
         };
-        fetch(`${url}/feedback/checkanswer`,option)
+        fetch(`${url}/feedback/CN/checkanswer`,option)
             .then(response=>response.text())
             .then(answer=>{
                 if (answer.substr(0, 1) === '0'){
@@ -279,7 +279,7 @@ export class ComplexFeedback extends React.Component {
                                         size="8"
                                         text="white"
                                         className="py-1 px-3 w-100"
-                                        style={{boxShadow:'none', borderRadius:'0px',backgroundColor:'#e8eaf6'}}
+                                        style={{boxShadow:'none', borderRadius:'0px'}}
                                     >
                                         {/*<p*/}
                                         {/*style={{borderStyle:'solid',borderColor:'#54B948',borderWidth:'0 0 0 0'}}*/}

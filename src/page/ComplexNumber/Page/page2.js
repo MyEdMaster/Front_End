@@ -2,6 +2,7 @@ import React from 'react';
 import {Video} from "../video-component/video";
 import {MDBRow, MDBCol,MDBBtn, MDBCard, MDBIcon} from 'mdbreact'
 import { InlineMath, BlockMath } from 'react-katex';
+import video from '../Lib/movie/addcomplex.mp4'
 import classes from './index.module.css'
 
 
@@ -31,7 +32,7 @@ export class ComplexPage2 extends React.Component {
 
                     </MDBCol>
                     <MDBCol size="6" className={classes.font3}>
-                        <Video url={'https://alistempirefoundation.org/assets/addcomplex.mp4'}/>
+                        <Video url={video}/>
                     </MDBCol>
                 </MDBRow>
                 <MDBRow>

@@ -5,27 +5,8 @@ import { InlineMath, BlockMath } from 'react-katex';
 import classes from './index.module.css'
 import {url} from "../../../tool/fetch-help";
 import Joyride from 'react-joyride';
-import styled from 'styled-components';
+import video from '../Lib/movie/dividingcomplex.mp4'
 
-//
-// const Wrapper = styled.div`
-//   align-items: center;
-//   background-color: #ccc;
-//   display: flex;
-//   flex-direction: column;
-//   min-height: 5000px;
-//   justify-content: center;
-//   width: auto;
-// `;
-// const Scroller = styled.div`
-//   background-color: #fff;
-//   box-sizing: border-box;
-//   height: 10000px;
-//   max-width: auto;
-//   margin: 0 auto;
-//   overflow: scroll;
-//   padding: 15px;
-// `;
 
 export class ComplexPage3 extends React.Component {
     constructor(props) {
@@ -166,7 +147,7 @@ export class ComplexPage3 extends React.Component {
 
                     </MDBCol>
                     <MDBCol size="6" className={classes.font3}>
-                        <Video url={'https://alistempirefoundation.org/assets/dividingcomplex.mp4'}/>
+                        <Video url={video}/>
                     </MDBCol>
                 </MDBRow>
                 <MDBRow>

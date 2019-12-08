@@ -1,6 +1,6 @@
 /node_modules
 .idea/workspace.xml
 .idea/encodings.xml
-
+/src/page/ComplexNumber/Lib/movie
 /build
 /bash

@@ -76,8 +76,8 @@ export class SpeechSyn extends Component {
                 //
                 // }
             }
-            utterThis.pitch = 1;
-            utterThis.rate = 1;
+            utterThis.pitch = 0.8;
+            utterThis.rate = 0.8;
             synth.speak(utterThis);
             inputTxt.blur();
         }

@@ -22,8 +22,8 @@ export const handleSyn=(text)=>{
     let voices = synth.getVoices();
     let utterThis = new SpeechSynthesisUtterance(text);
     console.log(voices)
-    utterThis.pitch = 1;
-    utterThis.rate = 1;
+    utterThis.pitch = 0.8;
+    utterThis.rate = 0.8;
     for(let i = 0; i < voices.length ; i++) {
         if(voices[i].name === 'Samantha'){
             utterThis.voice = voices[i];

@@ -1,8 +1,6 @@
 import React from 'react';
 import classes from './index.module.css';
 
-import house from '../Lib/house.jpg'
-import audio from '../Lib/audio/1.mp3'
 
 import {AskQuestion} from "../Component/ask-question";
 import {Audio} from "../Component/audio";

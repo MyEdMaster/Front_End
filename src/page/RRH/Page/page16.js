@@ -1,9 +1,5 @@
 import React from 'react';
 import classes from './index.module.css';
-import llrh from '../Lib/llrh.jpg';
-import bbw from '../Lib/bbw.jpg';
-import audio from '../Lib/audio/16.mp3'
-import chasing from '../Lib/chasing.jpg'
 import {AskQuestion} from "../Component/ask-question";
 import {Audio} from "../Component/audio";
 export class Page16 extends React.Component {

@@ -1,16 +1,5 @@
 import React from "react";
-// import {Test} from "../../Playground/Test";
-// import {Speech} from "../SpeechRecog-demo"
-// import {SpeechSyn} from "../SpeechSyn-demo";
-import {MDBBtn, MDBCol, MDBRow} from "mdbreact";
-import Joyride, { ACTIONS, EVENTS } from 'react-joyride';
-// import {handleSyn} from "../RRH/Component/speech-syn";
-// import {cancelSyn} from "../RRH/Component/speech-syn";
-import bbw from '../RRH/Lib/basket.jpg';
 import 'hopscotch/dist/css/hopscotch.css';
-import Floater from 'react-floater';
-import classes from "../ComplexNumber/Page/index.module.css";
-import {BlockMath, InlineMath} from "react-katex";
 import {FuncDraw} from "../Function/Graph";
 
 
@@ -22,7 +11,6 @@ export class TestPage extends React.Component {
             a:1,
             b:0,
             text:'222'
-
             // steps: [
             //     {
             //         target: ".p1",

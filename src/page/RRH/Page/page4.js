@@ -1,10 +1,7 @@
 import React from 'react';
 import classes from './index.module.css';
-import audio from '../Lib/audio/4.mp3'
 import {AskQuestion} from "../Component/ask-question";
 import {Audio} from "../Component/audio";
-import butterflies from "../Lib/butterflies.jpg";
-import leaving from "../Lib/leaving.jpg";
 export class Page4 extends React.Component {
     constructor(props) {
         super(props);

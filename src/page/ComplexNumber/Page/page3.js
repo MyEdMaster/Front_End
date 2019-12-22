@@ -5,7 +5,7 @@ import { InlineMath, BlockMath } from 'react-katex';
 import classes from './index.module.css'
 import {url} from "../../../tool/fetch-help";
 import Joyride from 'react-joyride';
-import video from '../Lib/movie/dividingcomplex.mp4'
+
 
 
 export class ComplexPage3 extends React.Component {
@@ -147,7 +147,7 @@ export class ComplexPage3 extends React.Component {
 
                     </MDBCol>
                     <MDBCol size="6" className={classes.font3}>
-                        <Video url={video}/>
+                        <Video url='https://myedmaster.oss-us-east-1.aliyuncs.com/dividingcomplex.mp4'/>
                     </MDBCol>
                 </MDBRow>
                 <MDBRow>

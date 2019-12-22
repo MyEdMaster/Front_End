@@ -26,13 +26,17 @@ export class AskQuestion extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            backend:'',
             modal1: false,
             modal2: false,
             redQuestion:'',
             wolfQuestion:'',
             answer:'',
+            q1:'',
+            q2:'',
+            q3:'',
             change:false,
-            tag:1,
+            tag:0,
             defaultQuestion:'',
             listening: false,
             speechState:'Click to start...',
@@ -74,63 +78,100 @@ export class AskQuestion extends React.Component {
             headers: {
                 'content-type': 'application/json',
             },
-            body:JSON.stringify({"question":value})
+            body:JSON.stringify({question:value})
         };
-        fetch(`${url}/getanswer`,option)
-            .then(response=>response.text())
+        fetch(`${url}/ask_question/p1`,option)
+            .then(response=>response.json())
             .then(answer=>{
-                if (answer.substr(0, 1) === '0'){
-                    this.setState({
-                        hints:'Is this the question you want to ask?',
-                        answer:answer.substring(1,answer.length),
-                        tag:0,
-                        defaultQuestion:answer.substring(1,answer.length)
-                    })
-                    handleSyn('Is this the question you want to ask')
-                    handleSyn((answer.substring(1,answer.length).replace('?', '.')))
-                }
-                else if(answer.substr(0, 1) === '2'){
-                    this.setState({
-                        hints:'',
-                        answer:'I cannot understand your question, could you ask it in another way'
-                        // answer:answer.substring(1,answer.length),
-                        // tag:0,
-                        // defaultQuestion:answer.substring(1,answer.length)
-                    })
-                    handleSyn('I cannot understand your question, could you ask it in another way')
-                }
-                else{
-                    this.setState({
-                        hint:'',
-                        answer:answer.substring(1,answer.length)
-                    })
-                    handleSyn((answer.substring(1,answer.length).replace('?', '.')))
+                this.setState({
+                    backend:answer
+                })
+                switch (answer.type) {
+                    case '1':
+                        this.setState({
+                            hints:'',
+                            answer:answer.answer1,
+                            tag:1
+                        });
+                        handleSyn((answer.answer1.replace('?', '.')));
+                        break;
+                    case '2':
+                        this.setState({
+                            hints:'Which is this the question you want to ask?',
+                            q1:answer.question1,
+                            q2:answer.question2,
+                            q3:answer.question3,
+                            tag:2,
+                        });
+                        handleSyn('Which is this the question you want to ask?');
+
+                        break;
+                    case '3':
+                        this.setState({
+                            hints:'The words don not add up',
+                            tag:3
+                        });
+                        handleSyn('The words don not add up')
                 }
 
             })
-            .catch(5000)
+
+
+        // fetch(`${url}/getanswer`,option)
+        //     .then(response=>response.text())
+        //     .then(answer=>{
+        //         if (answer.substr(0, 1) === '0'){
+        //             this.setState({
+        //                 hints:'Is this the question you want to ask?',
+        //                 answer:answer.substring(1,answer.length),
+        //                 tag:0,
+        //                 defaultQuestion:answer.substring(1,answer.length)
+        //             })
+        //             handleSyn('Is this the question you want to ask')
+        //             handleSyn((answer.substring(1,answer.length).replace('?', '.')))
+        //         }
+        //         else if(answer.substr(0, 1) === '2'){
+        //             this.setState({
+        //                 hints:'',
+        //                 answer:'I cannot understand your question, could you ask it in another way'
+        //                 // answer:answer.substring(1,answer.length),
+        //                 // tag:0,
+        //                 // defaultQuestion:answer.substring(1,answer.length)
+        //             })
+        //             handleSyn('I cannot understand your question, could you ask it in another way')
+        //         }
+        //         else{
+        //             this.setState({
+        //                 hint:'',
+        //                 answer:answer.substring(1,answer.length)
+        //             })
+        //             handleSyn((answer.substring(1,answer.length).replace('?', '.')))
+        //         }
+        //
+        //     })
+        //     .catch(5000)
     }
-    searchAgain=(answer)=>{
-        cancelSyn()
-        const newoption={
-            method:'POST',
-            headers: {
-                'content-type': 'application/json',
-            },
-            body:JSON.stringify({"question":answer})
-        };
-        fetch(`${url}/getanswer`,newoption)
-            .then(response=>response.text())
-            .then(newanswer=>{
-                this.setState({
-                    answer:newanswer.substring(1,newanswer.length),
-                    tag:1,
-                    hints:''
-                })
-                handleSyn('The answer is')
-                handleSyn(newanswer.substring(1,newanswer.length).replace('?', '.'))
-            })
-    };
+    // searchAgain=(answer)=>{
+    //     cancelSyn()
+    //     const newoption={
+    //         method:'POST',
+    //         headers: {
+    //             'content-type': 'application/json',
+    //         },
+    //         body:JSON.stringify({"question":answer})
+    //     };
+    //     fetch(`${url}/getanswer`,newoption)
+    //         .then(response=>response.text())
+    //         .then(newanswer=>{
+    //             this.setState({
+    //                 answer:newanswer.substring(1,newanswer.length),
+    //                 tag:1,
+    //                 hints:''
+    //             })
+    //             handleSyn('The answer is')
+    //             handleSyn(newanswer.substring(1,newanswer.length).replace('?', '.'))
+    //         })
+    // };
     //--------------Speech Recognition--------------
     toggleListen() {
         cancelSyn()
@@ -254,7 +295,7 @@ export class AskQuestion extends React.Component {
                             <img src={llrh} alt="Little Red Riding Hood" height="71" width="50"/>
                             <span >A QUESTION</span>
                         </div>
-                        {this.state.tag<1?(null):(
+                        {this.state.tag===2?(null):(
                             <div>
                                 <div className="d-flex justify-content-center align-content-center mt-5 mb-3">
                                     <div className="flex-grow-1">
@@ -276,12 +317,29 @@ export class AskQuestion extends React.Component {
                                                     redQuestion: str
                                                 });
                                             }}
+                                            onKeyDown={(e) =>{
+                                                if(e.keyCode===13){
+                                                    if(this.state.redQuestion===''){
+                                                        alert('Please input your question')
+                                                    }
+                                                    else{
+                                                        this.searchAnswer(this.state.redQuestion)
+                                                    }}
+                                            }
+                                            }
                                         />
                                     </div>
                                     <div className="ml-3">
                                         <MDBBtn
                                             tag="a" floating color="green" style={{margin:'6px'}}
-                                            onClick={()=>{this.searchAnswer(this.state.redQuestion)}}
+                                            onClick={()=>{
+                                                if(this.state.redQuestion===''){
+                                                    alert('Please input your question')
+                                                }
+                                                else{
+                                                    this.searchAnswer(this.state.redQuestion)
+                                                }}
+                                            }
                                         >
                                             <MDBIcon icon="question" />
                                         </MDBBtn>
@@ -314,51 +372,112 @@ export class AskQuestion extends React.Component {
                                     style={{borderStyle:'solid',borderColor:'white',borderWidth:'0 0 1px 0'}}
                                     className={classes.pb1}
                                 >Hints/Answer</p>
-                                {this.state.tag<1? (
-                                    <p className={classes.pb3}>{this.state.hints}</p>
-                                ):(null)}
-                                <p className={classes.pb2}>{this.state.answer}</p>
-                            </MDBCard>
-                            <div>
-                                {this.state.tag<1? (
-                                    <div className="d-flex justify-content-center align-items-center">
 
-                                        <MDBBtn
-                                            tag="a" floating className="green"
-                                            onClick={()=>{
-                                                this.searchAgain(this.state.defaultQuestion)
-                                                this.setState({
-                                                    tag:1
-                                                })
-                                            }}
-                                        >
-                                            <MDBIcon icon="check" />
-                                        </MDBBtn>
-                                        <MDBBtn
-                                            tag="a" floating className="red lighten-1"
+                                {this.state.tag===2? (
+                                    <div>
+                                        <p className={classes.pb3}>{this.state.hints}</p>
+                                        <div
                                             onClick={()=>{
                                                 this.setState({
-                                                    answer:'Sorry, we cannot find the answer',
-                                                    tag:1
+                                                    tag:1,
+                                                    hint:'',
+                                                    answer:this.state.backend.answer1
                                                 })
+                                                handleSyn(this.state.backend.answer1)
                                             }}
+                                            className={classes["select-ques"]}
                                         >
-                                            <MDBIcon icon="times" />
-                                        </MDBBtn>
-
+                                            {this.state.q1}
+                                        </div>
+                                        <div
+                                            onClick={()=>{
+                                                this.setState({
+                                                    tag:1,
+                                                    hints:'',
+                                                    answer:this.state.backend.answer2
+                                                })
+                                                handleSyn(this.state.backend.answer2)
+                                            }}
+                                            className={classes["select-ques"]}
+                                        >
+                                            {this.state.q2}
+                                        </div>
+                                        <div
+                                            onClick={()=>{
+                                                this.setState({
+                                                    tag:1,
+                                                    hints:'',
+                                                    answer:this.state.backend.answer3
+                                                })
+                                                handleSyn(this.state.backend.answer3)
+                                            }}
+                                            className={classes["select-ques"]}
+                                        >
+                                            {this.state.q3}
+                                        </div>
+                                        <div
+                                            onClick={()=>{
+                                                this.setState({
+                                                    tag:1,
+                                                    hints:'Could you rephrase the question？',
+                                                    answer:''
+                                                })
+                                                handleSyn('Could you rephrase the question')
+                                            }}
+                                            className={classes["select-ques"]}
+                                        >
+                                            None of above
+                                        </div>
                                     </div>
-                                ):(null)
-                                }
-                            </div>
+                                ):(
+                                    <div>
+                                        <p className={classes.pb3}>{this.state.hints}</p>
+                                        <p className={classes.pb2}>{this.state.answer}</p>
+                                    </div>
+
+                                )}
+
+                            </MDBCard>
+                            {/*<div>*/}
+                            {/*{this.state.tag<1? (*/}
+                            {/*<div className="d-flex justify-content-center align-items-center">*/}
+
+                            {/*<MDBBtn*/}
+                            {/*tag="a" floating className="green"*/}
+                            {/*onClick={()=>{*/}
+                            {/*this.searchAgain(this.state.defaultQuestion)*/}
+                            {/*this.setState({*/}
+                            {/*tag:1*/}
+                            {/*})*/}
+                            {/*}}*/}
+                            {/*>*/}
+                            {/*<MDBIcon icon="check" />*/}
+                            {/*</MDBBtn>*/}
+                            {/*<MDBBtn*/}
+                            {/*tag="a" floating className="red lighten-1"*/}
+                            {/*onClick={()=>{*/}
+                            {/*this.setState({*/}
+                            {/*answer:'Sorry, we cannot find the answer',*/}
+                            {/*tag:1*/}
+                            {/*})*/}
+                            {/*}}*/}
+                            {/*>*/}
+                            {/*<MDBIcon icon="times" />*/}
+                            {/*</MDBBtn>*/}
+
+                            {/*</div>*/}
+                            {/*):(null)*/}
+                            {/*}*/}
+                            {/*</div>*/}
                         </div>
 
                         {/*{this.state.change?(*/}
-                            {/*null*/}
+                        {/*null*/}
                         {/*):(*/}
 
-                            {/*<p>*/}
-                                {/*{this.state.answer}*/}
-                            {/*</p>*/}
+                        {/*<p>*/}
+                        {/*{this.state.answer}*/}
+                        {/*</p>*/}
                         {/*)}*/}
                     </MDBModalBody>
                 </MDBModal>
@@ -370,51 +489,71 @@ export class AskQuestion extends React.Component {
                             <img src={bbw} alt="Little Red Riding Hood" height="71" width="50"/>
                             <span >A QUESTION</span>
                         </div>
+                        {this.state.tag===2?(null):(
+                            <div>
+                                <div className="d-flex justify-content-center align-content-center mt-5 mb-3">
+                                    <div className="flex-grow-1">
+                                        <input
+                                            id='final'
+                                            className={`form-control form-control-lg ${classes.searchInput}`}
+                                            placeholder="Ask your question here"
+                                            style={{
+                                                borderStyle:'solid',
+                                                borderWidth:'1px',
+                                                borderColor:'#7e57c2',
+                                                borderRadius:'15px',
+                                                fontFamily:'\'Rajdhani\', sans-serif',
+                                                fontSize:'20px',
+                                            }}
+                                            onChange={(e) => {
+                                                const str=e.target.value
+                                                this.setState({
+                                                    wolfQuestion: str
+                                                });
+                                            }}
+                                            onKeyDown={(e) =>{
+                                                if(e.keyCode===13){
+                                                    if(this.state.wolfQuestion===''){
+                                                        alert('Please input your question')
+                                                    }
+                                                    else{
+                                                        this.searchAnswer(this.state.wolfQuestion)
+                                                    }}
+                                            }
+                                            }
+                                        />
+                                    </div>
+                                    <div className="ml-3">
+                                        <MDBBtn
+                                            tag="a" floating color="green" style={{margin:'6px'}}
+                                            onClick={()=>{
+                                                if(this.state.wolfQuestion===''){
+                                                    alert('Please input your question')
+                                                }
+                                                else{
+                                                    this.searchAnswer(this.state.wolfQuestion)
+                                                }}
+                                            }
+                                        >
+                                            <MDBIcon icon="question" />
+                                        </MDBBtn>
+                                    </div>
+                                    <div className="ml-1">
+                                        <MDBBtn
+                                            tag="a" floating color="purple lighten-2" style={{margin:'6px'}}
+                                            onClick={this.toggleListen}
+                                        >
+                                            <MDBIcon icon="microphone" />
+                                        </MDBBtn>
 
-                        <div className="d-flex justify-content-center align-content-center mt-5 mb-3">
-                            <div className="flex-grow-1">
-                                <input
-                                    id='final'
-                                    className={`form-control form-control-lg ${classes.searchInput}`}
-                                    placeholder="Ask your question here"
-                                    style={{
-                                        borderStyle:'solid',
-                                        borderWidth:'1px',
-                                        borderColor:'#7e57c2',
-                                        borderRadius:'15px',
-                                        fontFamily:'\'Rajdhani\', sans-serif',
-                                        fontSize:'20px',
-                                    }}
-                                    onChange={(e) => {
-                                        const str=e.target.value
-                                        this.setState({
-                                            wolfQuestion: str
-                                        });
-                                    }}
-                                />
+                                    </div>
+                                </div>
+                                <div className={classes.speechBorder}>
+                                    <div className={classes.body}>{this.state.speechState}</div>
+                                    <div id='interim'></div>
+                                </div>
                             </div>
-                            <div className="ml-3">
-                                <MDBBtn
-                                    tag="a" floating color="green lighten-2" style={{margin:'6px'}}
-                                    onClick={()=>{this.searchAnswer(this.state.wolfQuestion)}}
-                                >
-                                    <MDBIcon icon="question" />
-                                </MDBBtn>
-                            </div>
-                            <div className="ml-1">
-                                <MDBBtn
-                                    tag="a" floating color="purple lighten-2" style={{margin:'6px'}}
-                                    onClick={this.toggleListen}
-                                >
-                                    <MDBIcon icon="microphone" />
-                                </MDBBtn>
-
-                            </div>
-                        </div>
-                        <div className={classes.speechBorder} >
-                            <div className={classes.body}>{this.state.speechState}</div>
-                            <div id='interim'></div>
-                        </div>
+                        )}
 
                         <div className="mt-3">
                             <MDBCard
@@ -427,43 +566,103 @@ export class AskQuestion extends React.Component {
                                     style={{borderStyle:'solid',borderColor:'white',borderWidth:'0 0 1px 0'}}
                                     className={classes.pb1}
                                 >Hints/Answer</p>
-                                {this.state.tag<1? (
-                                    <p className={classes.pb3}>{this.state.hints}</p>
-                                ):(null)}
 
-                                <p className={classes.pb2}>{this.state.answer}</p>
-                            </MDBCard>
-                            <div>
-                                {this.state.tag<1? (
-                                    <div className="d-flex justify-content-center align-items-center">
-
-                                        <MDBBtn
-                                            tag="a" floating className="green"
-                                            onClick={()=>{
-                                                this.searchAgain(this.state.defaultQuestion)
-                                                this.setState({
-                                                    tag:1
-                                                })
-                                            }}
-                                        >
-                                            <MDBIcon icon="check" />
-                                        </MDBBtn>
-                                        <MDBBtn
-                                            tag="a" floating className="red lighten-1"
+                                {this.state.tag===2? (
+                                    <div>
+                                        <p className={classes.pb3}>{this.state.hints}</p>
+                                        <div
                                             onClick={()=>{
                                                 this.setState({
-                                                    answer:'Sorry, we cannot find the answer',
-                                                    tag:1
+                                                    tag:1,
+                                                    hint:'',
+                                                    answer:this.state.backend.answer1
                                                 })
+                                                handleSyn(this.state.backend.answer1)
                                             }}
+                                            className={classes["select-ques2"]}
                                         >
-                                            <MDBIcon icon="times" />
-                                        </MDBBtn>
-
+                                            {this.state.q1}
+                                        </div>
+                                        <div
+                                            onClick={()=>{
+                                                this.setState({
+                                                    tag:1,
+                                                    hints:'',
+                                                    answer:this.state.backend.answer2
+                                                })
+                                                handleSyn(this.state.backend.answer2)
+                                            }}
+                                            className={classes["select-ques2"]}
+                                        >
+                                            {this.state.q2}
+                                        </div>
+                                        <div
+                                            onClick={()=>{
+                                                this.setState({
+                                                    tag:1,
+                                                    hints:'',
+                                                    answer:this.state.backend.answer3
+                                                })
+                                                handleSyn(this.state.backend.answer3)
+                                            }}
+                                            className={classes["select-ques2"]}
+                                        >
+                                            {this.state.q3}
+                                        </div>
+                                        <div
+                                            onClick={()=>{
+                                                this.setState({
+                                                    tag:1,
+                                                    hints:'Could you rephrase the question？',
+                                                    answer:''
+                                                })
+                                                handleSyn('Could you rephrase the question')
+                                            }}
+                                            className={classes["select-ques2"]}
+                                        >
+                                            None of above
+                                        </div>
                                     </div>
-                                ):(null)
-                                }
-                            </div>
+                                ):(
+                                    <div>
+                                        <p className={classes.pb3}>{this.state.hints}</p>
+                                        <p className={classes.pb2}>{this.state.answer}</p>
+                                    </div>
+
+                                )}
+
+                            </MDBCard>
+                            {/*<div>*/}
+                            {/*{this.state.tag<1? (*/}
+                            {/*<div className="d-flex justify-content-center align-items-center">*/}
+
+                            {/*<MDBBtn*/}
+                            {/*tag="a" floating className="green"*/}
+                            {/*onClick={()=>{*/}
+                            {/*this.searchAgain(this.state.defaultQuestion)*/}
+                            {/*this.setState({*/}
+                            {/*tag:1*/}
+                            {/*})*/}
+                            {/*}}*/}
+                            {/*>*/}
+                            {/*<MDBIcon icon="check" />*/}
+                            {/*</MDBBtn>*/}
+                            {/*<MDBBtn*/}
+                            {/*tag="a" floating className="red lighten-1"*/}
+                            {/*onClick={()=>{*/}
+                            {/*this.setState({*/}
+                            {/*answer:'Sorry, we cannot find the answer',*/}
+                            {/*tag:1*/}
+                            {/*})*/}
+                            {/*}}*/}
+                            {/*>*/}
+                            {/*<MDBIcon icon="times" />*/}
+                            {/*</MDBBtn>*/}
+
+                            {/*</div>*/}
+                            {/*):(null)*/}
+                            {/*}*/}
+                            {/*</div>*/}
                         </div>
 
                         {/*{this.state.change?(*/}

@@ -91,19 +91,19 @@ class NavReact extends React.Component {
 
                             </MDBSideNavCat>
 
-                            <MDBSideNavCat
-                                name="Science"
-                                id="contact-me-cat"
-                                icon="chevron-right"
-                                style={{
-                                    fontFamily:'Comic Sans MS',
-                                    fontSize:'16px',
-                                    color: "#ffffff",
-                                }}
-                            >
-                                <MDBSideNavItem onClick={() => {this.props.history.push('/home');}}className={classes.subMenu}>Play basketball</MDBSideNavItem>
+                            {/*<MDBSideNavCat*/}
+                                {/*name="Science"*/}
+                                {/*id="contact-me-cat"*/}
+                                {/*icon="chevron-right"*/}
+                                {/*style={{*/}
+                                    {/*fontFamily:'Comic Sans MS',*/}
+                                    {/*fontSize:'16px',*/}
+                                    {/*color: "#ffffff",*/}
+                                {/*}}*/}
+                            {/*>*/}
+                                {/*<MDBSideNavItem onClick={() => {this.props.history.push('/home');}}className={classes.subMenu}>Play basketball</MDBSideNavItem>*/}
 
-                            </MDBSideNavCat>
+                            {/*</MDBSideNavCat>*/}
                         </MDBSideNavNav>
                     </MDBSideNav>
                 </div>

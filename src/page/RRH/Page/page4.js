@@ -18,13 +18,13 @@ export class Page4 extends React.Component {
     }
 
     render() {
-        console.log(audio)
+
         return (
             <div className={`${classes.body} align-content-center w-100 h-100 text-center`}>
                 <AskQuestion/>
-                <Audio audio={audio}/>
+                <Audio audio='https://myedmaster.oss-us-east-1.aliyuncs.com/4.mp3'/>
                 <div style={{padding:'50px 0'}}>
-                    <img className="py-2" src={butterflies} alt="village" width="600" height="400"/>
+                    <img className="py-2" src='https://myedmaster.oss-us-east-1.aliyuncs.com/butterflies.jpg' alt="village" width="600" height="400"/>
                     <p>But as soon as she left, Little Red Riding Hood forgot all about her promise and spent time
                         picking pretty flowers and
                         <button

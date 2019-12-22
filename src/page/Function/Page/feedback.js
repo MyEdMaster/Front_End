@@ -23,11 +23,9 @@ export class ComplexFeedback extends React.Component {
             listening: false,
             speechState:'Click to start...',
             hints:'',
-            backendjson:'',
             backend:'',
             question:'',
             answer:'',
-            type:0,
             tag:'',
             render:0,
             index:0,
@@ -77,51 +75,41 @@ export class ComplexFeedback extends React.Component {
                 'content-type': 'application/json',
             },
             body:JSON.stringify({
-                question_id:this.state.backend.content[this.state.index].id,
-                answer:value,
-                // "question":this.state.backend.content[this.state.index].id,
-                // "answer":value
+                "question":this.state.backend.content[this.state.index].id,
+                "answer":value
             })
         };
-        fetch(`${url}/analyse_answer/a2`,option)
-            .then(response=>response.json())
+        fetch(`${url}/feedback/CN/checkanswer`,option)
+            .then(response=>response.text())
             .then(answer=>{
-                this.setState({
-                    backendjson:answer
-                })
-                switch (answer.type) {
-                    case '1':
-                        this.setState({
-                            feedback:'',
-                            index:this.state.index + 1,
-                            type:1,
-                            tag:'Yes! You got it.'
-                        });
-                        handleSyn('Yes! You got it.');
-                        if(this.state.index <= this.state.backend.content.length){
-                            handleSyn(this.state.backend.content[this.state.index].question.replace('?', '.'))
-                        }
-                        break;
-                    case '2':
-                        this.setState({
-                            tag:'Is that what you are answering?',
-                            feedback:answer.answer,
-                            type:2
-                        });
-                        handleSyn('Is that what you are answering');
-                        handleSyn((answer.answer.replace('?', '.')));
+                if (answer.substr(0, 1) === '0'){
 
-                        break;
-                    case '3':
-                        this.setState({
-                            feedback:answer.answer,
-                            tag:'No.',
-                            type:3
-                        });
-                        handleSyn('No, the answer is');
-                        handleSyn((answer.answer.replace('?', '.')));
+                    this.setState({
+
+                        feedback:answer.substring(1,answer.length),
+
+                        tag:'No.'
+                    })
+                    handleSyn('The answer is')
+                    handleSyn((answer.substring(1,answer.length).replace('?', '.')))
                 }
+                else{
+                    this.setState({
+                        feedback:'',
+                        index:this.state.index + 1,
+                        tag:'Yes! You got it.'
+                    })
+                    handleSyn('Yes! You got it');
+                    if(this.state.index <= this.state.backend.content.length){
+                        handleSyn(this.state.backend.content[this.state.index].question.replace('?', '.'))
+                    }
+                }
+
+
             })
+            // .then(answer=>{
+            //
+            // })
     }
 
     //--------------Speech Recognition--------------
@@ -257,34 +245,17 @@ export class ComplexFeedback extends React.Component {
                                                 fontSize:'22px',
                                             }}
                                             onChange={(e) => {
-                                                const str=e.target.value;
+                                                const str=e.target.value
                                                 this.setState({
                                                     answer: str
                                                 });
                                             }}
-                                            onKeyDown={(e) =>{
-                                                if(e.keyCode===13){
-                                                    if(this.state.answer===''){
-                                                        alert('Please input your answer')
-                                                    }
-                                                    else{
-                                                        this.searchAnswer(this.state.answer)
-                                                    }}
-                                                }
-                                            }
                                         />
                                     </div>
                                     <div className="ml-3">
                                         <MDBBtn
                                             tag="a" floating color="purple" style={{margin:'6px'}}
-                                            onClick={()=>{
-                                                if(this.state.answer===''){
-                                                    alert('Please input your answer')
-                                                }
-                                                else{
-                                                    this.searchAnswer(this.state.answer)
-                                                }
-                                            }}
+                                            onClick={()=>{this.searchAnswer(this.state.answer)}}
                                         >
                                             <MDBIcon icon="question" />
                                         </MDBBtn>
@@ -303,70 +274,20 @@ export class ComplexFeedback extends React.Component {
                                     <div className={classes2.body2}>{this.state.speechState}</div>
                                     <div id='interim'></div>
                                 </div>
-                                {/*<div className="mt-3">*/}
-                                    {/*<MDBCard*/}
-                                        {/*size="8"*/}
-                                        {/*text="white"*/}
-                                        {/*className="py-1 px-3 w-100"*/}
-                                        {/*style={{boxShadow:'none', borderRadius:'0px'}}*/}
-                                    {/*>*/}
-                                        {/*/!*<p*!/*/}
-                                        {/*/!*style={{borderStyle:'solid',borderColor:'#54B948',borderWidth:'0 0 0 0'}}*!/*/}
-                                        {/*/!*className={classes2.pb1}*!/*/}
-                                        {/*/!*>Hints/Feedback</p>*!/*/}
-                                        {/*<p className={classes2.fb2}>{this.state.tag}</p>*/}
-
-                                        {/*<p className={classes2.fb2}>{this.state.feedback}</p>*/}
-                                    {/*</MDBCard>*/}
-                                {/*</div>*/}
                                 <div className="mt-3">
                                     <MDBCard
                                         size="8"
                                         text="white"
                                         className="py-1 px-3 w-100"
-                                        style={{boxShadow:'none', borderRadius:'0px',backgroundColor:'#e8eaf6'}}
+                                        style={{boxShadow:'none', borderRadius:'0px'}}
                                     >
-
+                                        {/*<p*/}
+                                        {/*style={{borderStyle:'solid',borderColor:'#54B948',borderWidth:'0 0 0 0'}}*/}
+                                        {/*className={classes2.pb1}*/}
+                                        {/*>Hints/Feedback</p>*/}
                                         <p className={classes2.fb2}>{this.state.tag}</p>
 
                                         <p className={classes2.fb2}>{this.state.feedback}</p>
-                                        <div>
-                                            {this.state.type === 2? (
-                                                <div className="d-flex justify-content-center align-items-center">
-
-                                                    <MDBBtn
-                                                        tag="a" floating className="green"
-                                                        onClick={()=>{
-                                                            cancelSyn()
-                                                            this.setState({
-                                                                type:1,
-                                                                tag:'Yes, you got it',
-                                                                feedback:this.state.backendjson.answer
-                                                            })
-                                                            handleSyn('Yes, you got it.')
-                                                        }}
-                                                    >
-                                                        <MDBIcon icon="check" />
-                                                    </MDBBtn>
-                                                    <MDBBtn
-                                                        tag="a" floating className="red lighten-1"
-                                                        onClick={()=>{
-                                                            cancelSyn()
-                                                            this.setState({
-                                                                type:1,
-                                                                tag:'No',
-                                                                feedback:this.state.backendjson.answer
-                                                            })
-                                                            handleSyn('No, the answer is')
-                                                            handleSyn((this.state.backendjson.answer.replace('?', '.')));
-                                                        }}
-                                                    >
-                                                        <MDBIcon icon="times" />
-                                                    </MDBBtn>
-                                                </div>
-                                            ):(null)
-                                            }
-                                        </div>
                                     </MDBCard>
                                 </div>
                             </div>

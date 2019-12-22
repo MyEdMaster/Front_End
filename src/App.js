@@ -8,6 +8,7 @@ import {RRH} from "./page/RRH";
 import {HomePage} from "./page/HomePage";
 import {ComplexNumber} from "./page/ComplexNumber";
 import {TestPage} from "./page/test-page";
+import {Function} from "./page/Function";
 
 export class App extends Component {
     render() {
@@ -30,6 +31,10 @@ export class App extends Component {
                     <Route
                         path="/complex"
                         component={routeProps => <ComplexNumber {...routeProps} />}
+                    />
+                    <Route
+                        path="/function"
+                        component={routeProps => <Function {...routeProps} />}
                     />
                     <Redirect to="/home"/>
                 </Switch>

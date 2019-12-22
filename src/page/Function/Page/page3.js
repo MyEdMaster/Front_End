@@ -220,7 +220,7 @@ export class ComplexPage3 extends React.Component {
                             &nbsp;<InlineMath>3 + 8y</InlineMath>.
                             <tr/><br/>
                             And, since a complex number is also a binomial comprised of a real term and an
-                            &nbsp;<span className={classes.high}>imaginary term</span>, given the complex number
+                            <span className={classes.high}>imaginary term</span>, given the complex number
                             &nbsp;<InlineMath>5 - 3i</InlineMath>, the complex conjugate would be
                             &nbsp;<InlineMath>5 + 3i</InlineMath>.
                             <tr/><br/>
@@ -241,14 +241,14 @@ export class ComplexPage3 extends React.Component {
                             <tr/><br/>
 
                             FOIL the numerator:
-                            &nbsp;<InlineMath>15 - 12i - 10i + 8i^2</InlineMath>&nbsp;(which becomes
-                            &nbsp;<InlineMath>-8</InlineMath>)&nbsp;and combine like terms to get
+                            &nbsp;<InlineMath>15 - 12i - 10i + 8i^2)</InlineMath>&nbsp;which becomes
+                            &nbsp;<InlineMath>-8</InlineMath>&nbsp;and combine like terms to get
                             &nbsp;<InlineMath>(7 - 22i)</InlineMath>.
                             <tr/><br/>
 
                             FOIL the denominator:
-                            &nbsp;<InlineMath>25 - 20i + 20i - 16i^2</InlineMath>&nbsp;(
-                            which becomes &nbsp;<InlineMath>16</InlineMath>) and combine like terms to get
+                            &nbsp;<InlineMath>25 - 20i + 20i - 16i^2)</InlineMath>&nbsp;
+                            which becomes &nbsp;<InlineMath>16</InlineMath>, and combine like terms to get
                             &nbsp;<InlineMath>41</InlineMath>.
                             <tr/><br/>
 
@@ -269,22 +269,22 @@ export class ComplexPage3 extends React.Component {
                             &nbsp;<InlineMath>(-1 + 3i)</InlineMath>. Notice how the negative 1 does not change—only
                             the sign between the two terms changes.
                             <tr/><br/>
-                            <BlockMath>(4 + 6i)(-1 -3i)/((-1 - 3i)(-1 + 3i))</BlockMath>.
+                            <BlockMath>(4 + 6i)(-1 -3i)/(-1 - 3i)(-1 + 3i)</BlockMath>.
                             <tr/><br/>
 
                             FOIL the numerator:
                             &nbsp;<InlineMath>-4 + 12i - 6i + 18i^2</InlineMath>&nbsp;
-                            (which becomes&nbsp;<InlineMath>-18</InlineMath>)&nbsp;and combine like terms to get
+                            which becomes&nbsp;<InlineMath>-18</InlineMath>&nbsp;and combine like terms to get
                             &nbsp;<InlineMath>(-22 + 12i)</InlineMath>.
                             <tr/><br/>
 
                             FOIL the denominator:
                             &nbsp;<InlineMath>1 - 3i + 3i -9i^2</InlineMath>&nbsp;
-                            (which becomes&nbsp;<InlineMath>9</InlineMath>)&nbsp;
+                            which becomes&nbsp;<InlineMath>9</InlineMath>&nbsp;
                             and combine like terms to get&nbsp;<InlineMath>10</InlineMath>&nbsp;.
                             <tr/><br/>
                             You’re left with
-                            &nbsp;<InlineMath>(-22 + 12i)/10</InlineMath>&nbsp;
+                            &nbsp;<InlineMath>-22 + 12i/10</InlineMath>&nbsp;
                             which when split becomes
                             &nbsp;<InlineMath>-22/10 +(12/10)i</InlineMath>; . However, you can further reduce each fraction,
                             so your final answer is

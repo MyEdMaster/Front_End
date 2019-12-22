@@ -22,9 +22,9 @@ export class Page10 extends React.Component {
         return (
             <div className={`${classes.body} align-content-center w-100 h-100 text-center`}>
                 <AskQuestion/>
-                <Audio audio={audio}/>
+                <Audio audio='https://myedmaster.oss-us-east-1.aliyuncs.com/10.mp3'/>
                 <div style={{padding:'50px 0'}}>
-                    <img className="py-2" src={bed} alt="village" width="600" height="400"/>
+                    <img className="py-2" src='https://myedmaster.oss-us-east-1.aliyuncs.com/bed.jpg' alt="village" width="600" height="400"/>
                     <p>A few minutes later, Little Red Riding Hood knocked on the door. </p>
                     {/*<p>几分钟后，小红帽敲门。</p>*/}
                     <p>The wolf quickly jumped into bed and pulled the blanket over his nose.</p>

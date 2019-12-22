@@ -44,9 +44,9 @@ export class ComplexPage2 extends React.Component {
                             Adding <span className={classes.high}>complex numbers</span> is actually rather straightforward and simple.
                             <br/>
                             A complex number is a combination of a <span className={classes.high}>real number</span> and an
-                            &nbsp;<span className={classes.high}>imaginary number</span>. We generally write <span className={classes.high}>complex numbers</span>
+                            <span className={classes.high}>imaginary number</span>. We generally write <span className={classes.high}>complex numbers</span>
                             in &nbsp;<InlineMath>a + bi</InlineMath>&nbsp;form, where &nbsp;<InlineMath>a</InlineMath>&nbsp; is the
-                            &nbsp;<span className={classes.high}>real number</span> and
+                            <span className={classes.high}>real number</span> and
                             &nbsp;<InlineMath>bi</InlineMath>&nbsp;is the <span className={classes.high}>imaginary number</span>. For example,
                             &nbsp;<InlineMath>3 + 7i</InlineMath>&nbsp;or
                             &nbsp;<InlineMath>5 - 2i</InlineMath>&nbsp;.

@@ -22,20 +22,13 @@ export class Page1 extends React.Component {
     render() {
         return (
             <div className={`${classes.body} align-content-center w-100 h-100 text-center`}>
-                {/*<div className={classes.fixed}>*/}
-                    {/*<button className="button button" onClick={()=>{this.myClick("Try asking Little Red Riding Hood a question!")}}>*/}
-                        {/*<img src={llrh} alt="Little Red Riding Hood" height="142" width="100"/></button>*/}
-                {/*</div>*/}
-                {/*<div className={classes.fixed1}>*/}
-                    {/*<button className="button button" onClick={()=>{this.myClick("Try asking Little Red Riding Hood a question!")}}><img*/}
-                        {/*src={bbw} alt="Big Bad Wolf" height="142" width="100"/></button>*/}
-                {/*</div>*/}
+
                 <AskQuestion/>
-                <Audio audio={audio}/>
+                <Audio audio='https://myedmaster.oss-us-east-1.aliyuncs.com/1.mp3'/>
                 <div style={{padding:'50px 0'}}>
-                    <img className="py-2" src={house} alt="village" width="600" height="400"/>
+                    <img className="py-2" src='https://myedmaster.oss-us-east-1.aliyuncs.com/house.jpg' alt="village" width="600" height="400"/>
                     {/*todo:<p className="red-text">Lack village.jpg</p>*/}
-                    <p> Once upon a time, there was a little girl who lived near the forest.</p>
+                    <p> Once upon a time, there was a little girl who lived in a small town near the forest.</p>
                     {/*<p>曾几何时，有一个小女孩住在森林附近的一个村庄里。</p>*/}
                     <p>The little girl always wore a red
                         <button

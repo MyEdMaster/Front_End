@@ -22,9 +22,9 @@ export class Page16 extends React.Component {
         return (
             <div className={`${classes.body} align-content-center w-100 h-100 text-center`}>
                 <AskQuestion/>
-                <Audio audio={audio}/>
+                <Audio audio='https://myedmaster.oss-us-east-1.aliyuncs.com/16.mp3'/>
                 <div style={{padding:'50px 0'}}>
-                    <img className="py-2" src={chasing} alt="village" width="600" height="400"/>
+                    <img className="py-2" src='https://myedmaster.oss-us-east-1.aliyuncs.com/chasing.jpg' alt="village" width="600" height="400"/>
                     <p>Little Red Riding Hood realized that the person on the bed was not her grandmother, but a big, scary wolf.</p>
                     {/*<p>小红帽意识到床上的人不是她的祖母，而是一只大而可怕的狼。</p>*/}
                     <p>Little Red Riding Hood shouted for help while running around the room, “Help! A wolf is trying to eat me!”</p>

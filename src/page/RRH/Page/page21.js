@@ -22,9 +22,9 @@ export class Page21 extends React.Component {
         return (
             <div className={`${classes.body} align-content-center w-100 h-100 text-center`}>
                 <AskQuestion/>
-                <Audio audio={audio}/>
+                <Audio audio='https://myedmaster.oss-us-east-1.aliyuncs.com/21.mp3'/>
                 <div style={{padding:'50px 0'}}>
-                    <img className="py-2" src={food} alt="village" width="600" height="400"/>
+                    <img className="py-2" src='https://myedmaster.oss-us-east-1.aliyuncs.com/food.jpg' alt="village" width="600" height="400"/>
                     <p>“Now Little Red Riding Hood, have you learned anything from this?” asked the grandmother.</p>
                     {/*<p>“现在小红帽，你从中学到了什么吗？”奶奶问道。</p>*/}
                     <p>“Yes, I should never talk to strangers because it is very dangerous,” said Little Red Riding Hood.</p>

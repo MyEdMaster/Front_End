@@ -6,6 +6,7 @@ import {ComplexPage1} from "./Page/page1";
 import {ComplexPage2} from "./Page/page2";
 import {ComplexPage3} from "./Page/page3";
 import {ComplexFeedback} from "./Page/feedback";
+import {AskQuestionComplex} from "./Page/ask-question";
 
 import classes from './index.module.css'
 
@@ -55,6 +56,7 @@ export class ComplexNumber extends React.Component {
                       Q & A
                   </div>
               </div>
+              <AskQuestionComplex/>
               <Switch>
 
                   <Route

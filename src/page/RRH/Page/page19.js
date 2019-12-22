@@ -22,9 +22,9 @@ export class Page19 extends React.Component {
         return (
             <div className={`${classes.body} align-content-center w-100 h-100 text-center`}>
                 <AskQuestion/>
-                <Audio audio={audio}/>
+                <Audio audio='https://myedmaster.oss-us-east-1.aliyuncs.com/19.mp3'/>
                 <div style={{padding:'50px 0 200px 0'}}>
-                    <img className="py-2" src={carry} alt="village" width="600" height="400"/>
+                    <img className="py-2" src='https://myedmaster.oss-us-east-1.aliyuncs.com/carry.jpg' alt="village" width="600" height="400"/>
                     <p>The woodsman carried the wolf deep into the forest where the wolf could not hurt anyone.</p>
                     {/*<p>这个樵夫把狼带到森林深处，狼不会伤到任何人。</p>*/}
 

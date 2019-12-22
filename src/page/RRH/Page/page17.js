@@ -22,9 +22,9 @@ export class Page17 extends React.Component {
         return (
             <div className={`${classes.body} align-content-center w-100 h-100 text-center`}>
                 <AskQuestion/>
-                <Audio audio={audio}/>
+                <Audio audio='https://myedmaster.oss-us-east-1.aliyuncs.com/17.mp3'/>
                 <div style={{padding:'50px 0'}}>
-                    <img className="py-2" src={lumber} alt="village" width="600" height="400"/>
+                    <img className="py-2" src='https://myedmaster.oss-us-east-1.aliyuncs.com/lumber.jpg' alt="village" width="600" height="400"/>
                     <p>A <button
                         className={classes.button1}
                         onClick={()=>{this.myClick("a job where a person cuts trees for wood")}}

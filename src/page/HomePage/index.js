@@ -113,19 +113,19 @@ class HomePageReact extends React.Component {
 
                             </MDBSideNavCat>
 
-                            <MDBSideNavCat
-                                name="Science"
-                                id="contact-me-cat"
-                                icon="chevron-right"
-                                style={{
-                                    fontFamily:'Comic Sans MS',
-                                    fontSize:'16px',
-                                    color: "#ffffff",
-                                }}
-                            >
-                                <MDBSideNavItem onClick={() => {this.props.history.push('/home');}} className={classes.subMenu}>Play basketball</MDBSideNavItem>
+                            {/*<MDBSideNavCat*/}
+                                {/*name="Science"*/}
+                                {/*id="contact-me-cat"*/}
+                                {/*icon="chevron-right"*/}
+                                {/*style={{*/}
+                                    {/*fontFamily:'Comic Sans MS',*/}
+                                    {/*fontSize:'16px',*/}
+                                    {/*color: "#ffffff",*/}
+                                {/*}}*/}
+                            {/*>*/}
+                                {/*<MDBSideNavItem onClick={() => {this.props.history.push('/home');}} className={classes.subMenu}>Play basketball</MDBSideNavItem>*/}
 
-                            </MDBSideNavCat>
+                            {/*</MDBSideNavCat>*/}
                         </MDBSideNavNav>
                     </MDBSideNav>
                 </div>
@@ -201,7 +201,6 @@ class HomePageReact extends React.Component {
                                     <MDBCol
                                         md="4"
                                         className={classes.content}
-
                                     >
                                         <MDBIcon icon="book-open" size="3x" className="mt-2" style={{color:'#E41A6A'}}/>
                                         <h4 className="font-weight-bold my-4" style={{fontFamily:'Comic Sans MS',color:'#E41A6A'}}>Reading</h4>
@@ -219,16 +218,23 @@ class HomePageReact extends React.Component {
                                     <MDBCol
                                         md="4"
                                         className={classes.content}
-                                        onClick={() => {this.props.history.push('/complex');}}
                                     >
                                         <MDBIcon icon="square-root-alt" size="3x" className="mt-2" style={{color:'#F1831D'}}/>
                                         <h4 className="font-weight-bold my-4" style={{fontFamily:'Comic Sans MS',color:'#F1831D'}}>Math</h4>
                                         <p
                                             className={classes.math}
 
-                                            onClick={() => {this.props.history.push('/rrh/cover');}}
+                                            onClick={() => {this.props.history.push('/complex');}}
                                         >
                                             <span className={classes.font1}>Learn the complex numbers</span>
+
+                                        </p>
+                                        <p
+                                            className={classes.math}
+
+                                            onClick={() => {this.props.history.push('/function');}}
+                                        >
+                                            <span className={classes.font1}>Learn the function</span>
 
                                         </p>
                                         <p className={classes.font2}>
@@ -243,7 +249,7 @@ class HomePageReact extends React.Component {
 
                                             // onClick={() => {this.props.history.push('/rrh/cover');}}
                                         >
-                                            <span className={classes.font1}>Play Basketball</span>
+                                            {/*<span className={classes.font1}>Play Basketball</span>*/}
 
                                         </p>
                                         <p className={classes.font2}>

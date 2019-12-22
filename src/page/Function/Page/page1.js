@@ -43,11 +43,11 @@ export class ComplexPage1 extends React.Component {
                         <p className={classes.ph}>
                             Up until now, all the math you've done has more than likely focused around
                             the <span className={classes.high}>real numbers</span> which consists of
-                            &nbsp;<span className={classes.high}>rational numbers</span> and
-                            &nbsp;<span className={classes.high}>irrational numbers</span>: the rational
+                            <span className={classes.high}>rational numbers</span> and
+                            <span className={classes.high}>irrational numbers</span>: the rational
                             numbers including numbers like
-                            &nbsp;<span className={classes.high}>integers, whole numbers, and natural
-                            numbers&nbsp;</span>; the irrational numbers consisting of numbers like &nbsp;
+                            <span className={classes.high}>integers, whole numbers, and natural
+                            numbers</span>; the irrational numbers consisting of numbers like &nbsp;
                             <span className={classes.high}><InlineMath> \pi </InlineMath>
                             &nbsp;or &nbsp;<InlineMath>\sqrt3</InlineMath>&nbsp;</span>
                                 ; numbers like that that can’t be represented by a fraction.

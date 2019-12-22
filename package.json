@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "echarts": "^4.5.0",
+    "echarts-for-react": "^2.0.15-beta.1",
     "mdbreact": "git+https://oauth2:HA3Lyzg_ziCJX8WTS113@git.mdbootstrap.com/mdb/react/re-pro.git",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",

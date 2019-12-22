@@ -21,9 +21,9 @@ export class Page3 extends React.Component {
         return (
             <div className={`${classes.body} align-content-center w-100 h-100 text-center`}>
                 <AskQuestion/>
-                <Audio audio={audio}/>
+                <Audio audio='https://myedmaster.oss-us-east-1.aliyuncs.com/3.mp3'/>
                 <div style={{padding:'50px 0'}}>
-                    <img className="py-2" src={leaving} alt="village" width="600" height="400"/>
+                    <img className="py-2" src='https://myedmaster.oss-us-east-1.aliyuncs.com/leaving.jpg' alt="village" width="600" height="400"/>
                     <p>“Be careful, Little Red Riding Hood,” her mother warned.</p>
                     {/*<p>“小心，小红帽，”她的母亲警告说。</p>*/}
                     <p>“You never know what’s hiding in the dark scary woods. Please do not talk to

@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css?family=Rajdhani&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@font-face {
+    font-family:'Rajdhani', sans-serif;
+    src: url('https://fonts.googleapis.com/css?family=Rajdhani&display=swap')
+}
+@font-face {
+    font-family:'Roboto', sans-serif;
+    src: url('https://fonts.googleapis.com/css?family=Roboto&display=swap')
+}
+
+
+.font{
+     font-family: 'Rajdhani', sans-serif;
+     color: #7e57c2;
+     font-size: 70px;
+     font-style: normal;
+     font-weight: 400;
+     padding: 25px;
+     font-variant: normal;
+     line-height: 77px;
+     text-align: center;
+ }
+.font2{
+    font-family: 'Rajdhani', sans-serif;
+    color: #F1831D;
+    padding-bottom: 25px;
+    font-size: 70px;
+    font-style: normal;
+    font-variant: normal;
+
+    line-height: 77px;
+    text-align: center;
+}
+.font3{
+    font-family: 'Rajdhani', sans-serif;
+    color: #F1831D;
+    font-size: 20px;
+    font-style: normal;
+    font-variant: normal;
+
+}
+.center{
+    text-align: center;
+}
+.title1{
+    font-family: 'Rajdhani', sans-serif;
+    height: 100%;
+    color: #7e57c2;
+    font-size: 70px;
+    font-style: normal;
+    padding: 25px 0;
+    font-variant: normal;
+    line-height: 77px;
+    text-align: center;
+}
+.title2{
+    font-family: 'Rajdhani', sans-serif;
+    height: auto;
+    color: #F1831D;
+    padding: 25px 0;
+    font-size: 70px;
+    font-style: normal;
+    font-variant: normal;
+
+    line-height: 77px;
+    text-align: center;
+}
+.font3{
+    font-family: 'Rajdhani', sans-serif;
+    color: #000000;
+    padding-bottom: 25px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    font-variant: normal;
+    line-height: 30px;
+    text-align: left;
+}
+.euq{
+    font-family: Comic Sans MS;
+    font-size: 30px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 80px;
+    text-align: center;
+}
+.border{
+    margin: 20px 0;
+
+    border-style:solid;
+    border-width:3px;
+    border-radius: 20px;
+    border-color: #F1831D;
+    padding: 10px 15px;
+}
+
+.btn{
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    background-color: #7e57c2;
+    border-radius: 10px;
+    text-align: center;
+}
+.btn:hover{
+    border-radius: 20px;
+    transition: all 0.2s ease-in-out;
+}
+.ph{
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 20px;
+    font-weight: bolder;
+}
+.ph2{
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 30px;
+    font-weight: bolder;
+    text-align: center;
+}
+.ph{
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 30px;
+    font-weight: bolder;
+    text-align: center;
+}
+.body2{
+    background: #ffffcc;
+    font-family: 'Rajdhani', sans-serif;
+}
+.high{
+    color:#F1831D;
+}
+.pb{
+    font-family: 'Roboto',sans-serif ;
+    font-weight: bolder;
+    font-size: 24px;
+    color:white;
+}
+.pb2{
+    font-family: 'Roboto',sans-serif ;
+    font-size: 18px;
+    color:white;
+}
+.pb3{
+    font-family: 'Roboto',sans-serif ;
+    font-size: 16px;
+    color:#ffab40;
+    padding: 0 15px;
+    cursor: pointer;
+}
+.pb3:hover{
+    color:#ffd180;
+    transition: all 0.2s ease-in-out;
+}
+.pb4{
+    font-family: 'Roboto',sans-serif ;
+    font-weight: bolder;
+    font-size: 24px;
+    color:#66bb6a;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.ws{
+    font-family: 'Roboto',sans-serif ;
+    font-weight: bold;
+    font-size: 24px;
+    color:black;
+}
+.worksheet{
+    border-style:solid;
+    border-width:3px;
+    border-color: #eee;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+
+}
+.btnfixed{
+    position:fixed;
+
+
+    bottom:20px;
+}
+.body{
+
+    height: 2000px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-variant: normal;
+    line-height: 30px;
+}
+.fb1{
+    font-family: 'Roboto',sans-serif ;
+    font-weight: bolder;
+    font-size: 24px;
+    color:#7e57c2;
+    margin-top: 10px;
+    text-align: center;
+}
+.fb2{
+    font-family: 'Roboto',sans-serif ;
+    font-weight: bolder;
+    font-size: 18px;
+    color:#7e57c2;
+    margin-top: 10px;
+    text-align: left;
+}

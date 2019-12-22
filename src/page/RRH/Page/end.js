@@ -23,10 +23,12 @@ export class End extends React.Component {
             listening: false,
             speechState:'Click to start...',
             hints:'',
-            backend:'',
+            backendjson:'',
             question:'',
+            backend:'',
             answer:'',
             tag:'',
+            type:0,
             render:0,
             index:0,
             feedback:'',
@@ -43,6 +45,8 @@ export class End extends React.Component {
         };
         this.toggleListen = this.toggleListen.bind(this)
         this.handleListen = this.handleListen.bind(this)
+        this.searchAnswer = this.searchAnswer.bind(this)
+        this.onKeyup = this.onKeyup.bind(this)
     }
     componentDidMount() {
         const option={
@@ -75,41 +79,51 @@ export class End extends React.Component {
                 'content-type': 'application/json',
             },
             body:JSON.stringify({
-                "question":this.state.backend.content[this.state.index].id,
-                "answer":value
+                question_id:this.state.backend.content[this.state.index].id,
+                answer:value,
+                // "question":this.state.backend.content[this.state.index].id,
+                // "answer":value
             })
         };
-        fetch(`${url}/feedback/checkanswer`,option)
-            .then(response=>response.text())
+        fetch(`${url}/analyse_answer/a1`,option)
+            .then(response=>response.json())
             .then(answer=>{
-                if (answer.substr(0, 1) === '0'){
+                this.setState({
+                    backendjson:answer
+                })
+                switch (answer.type) {
+                    case '1':
+                        this.setState({
+                            feedback:'',
+                            index:this.state.index + 1,
+                            type:1,
+                            tag:'Yes! You got it.'
+                        });
+                        handleSyn('Yes! You got it.');
+                        if(this.state.index <= this.state.backend.content.length){
+                            handleSyn(this.state.backend.content[this.state.index].question.replace('?', '.'))
+                        }
+                        break;
+                    case '2':
+                        this.setState({
+                            tag:'Is that what you are answering?',
+                            feedback:answer.answer,
+                            type:2
+                        });
+                        handleSyn('Is that what you are answering');
+                        handleSyn((answer.answer.replace('?', '.')));
 
-                    this.setState({
-
-                        feedback:answer.substring(1,answer.length),
-
-                        tag:'No.'
-                    })
-                    handleSyn('The answer is')
-                    handleSyn((answer.substring(1,answer.length).replace('?', '.')))
+                        break;
+                    case '3':
+                        this.setState({
+                            feedback:answer.answer,
+                            tag:'No.',
+                            type:3
+                        });
+                        handleSyn('No, the answer is');
+                        handleSyn((answer.answer.replace('?', '.')));
                 }
-                else{
-                    this.setState({
-                        feedback:'',
-                        index:this.state.index + 1,
-                        tag:'Yes! You got it.'
-                    })
-                    handleSyn('Yes! You got it');
-                    if(this.state.index <= this.state.backend.content.length){
-                        handleSyn(this.state.backend.content[this.state.index].question.replace('?', '.'))
-                    }
-                }
-
-
             })
-            // .then(answer=>{
-            //
-            // })
     }
 
     //--------------Speech Recognition--------------
@@ -188,6 +202,11 @@ export class End extends React.Component {
 
     }
 
+    onKeyup(e) {
+        if(e.keyCode === 13) {
+            this.searchAnswer(this.state.answer)}
+    }
+
     render() {
         if (this.state.render === 1){
             const { steps } = this.state;
@@ -227,8 +246,8 @@ export class End extends React.Component {
 
                                 <p className={`${classes2.ph} question`}>
                                     {this.state.index <= this.state.backend.content.length?
-                                    this.state.backend.content[this.state.index].question
-                                    :'All questions have been done!'}
+                                        this.state.backend.content[this.state.index].question
+                                        :'All questions have been done!'}
                                 </p>
 
                                 <div className="d-flex justify-content-center align-content-start mt-3 mb-3">
@@ -251,6 +270,7 @@ export class End extends React.Component {
                                                     answer: str
                                                 });
                                             }}
+                                            onKeyDown={this.onKeyup}
                                         />
                                     </div>
                                     <div className="ml-3">
@@ -282,13 +302,47 @@ export class End extends React.Component {
                                         className="py-1 px-3 w-100"
                                         style={{boxShadow:'none', borderRadius:'0px',backgroundColor:'#e8eaf6'}}
                                     >
-                                        {/*<p*/}
-                                        {/*style={{borderStyle:'solid',borderColor:'#54B948',borderWidth:'0 0 0 0'}}*/}
-                                        {/*className={classes2.pb1}*/}
-                                        {/*>Hints/Feedback</p>*/}
+
                                         <p className={classes2.pb2}>{this.state.tag}</p>
 
                                         <p className={classes2.pb2}>{this.state.feedback}</p>
+                                        <div>
+                                            {this.state.type === 2? (
+                                                <div className="d-flex justify-content-center align-items-center">
+
+                                                    <MDBBtn
+                                                        tag="a" floating className="green"
+                                                        onClick={()=>{
+                                                            cancelSyn()
+                                                            this.setState({
+                                                                type:1,
+                                                                tag:'Yes, you got it',
+                                                                feedback:this.state.backendjson.answer
+                                                            })
+                                                            handleSyn('Yes, you got it.')
+                                                        }}
+                                                    >
+                                                        <MDBIcon icon="check" />
+                                                    </MDBBtn>
+                                                    <MDBBtn
+                                                        tag="a" floating className="red lighten-1"
+                                                        onClick={()=>{
+                                                            cancelSyn()
+                                                            this.setState({
+                                                                type:1,
+                                                                tag:'No',
+                                                                feedback:this.state.backendjson.answer
+                                                            })
+                                                            handleSyn('No, the answer is')
+                                                            handleSyn((this.state.backendjson.answer.replace('?', '.')));
+                                                        }}
+                                                    >
+                                                        <MDBIcon icon="times" />
+                                                    </MDBBtn>
+                                                </div>
+                                            ):(null)
+                                            }
+                                        </div>
                                     </MDBCard>
                                 </div>
                             </div>

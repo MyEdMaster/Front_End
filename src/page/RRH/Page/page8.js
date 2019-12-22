@@ -22,9 +22,9 @@ export class Page8 extends React.Component {
         return (
             <div className={`${classes.body} align-content-center w-100 h-100 text-center`}>
                 <AskQuestion/>
-                <Audio audio={audio}/>
+                <Audio audio='https://myedmaster.oss-us-east-1.aliyuncs.com/8.mp3'/>
                 <div style={{padding:'50px 0'}}>
-                    <img className="py-2" src={house} alt="village" width="600" height="400"/>
+                    <img className="py-2" src='https://myedmaster.oss-us-east-1.aliyuncs.com/house.jpg' alt="village" width="600" height="400"/>
                     <p>“Oh thank goodness, dear! Come in darling. I was worried you got lost in the woods!” </p>
                     {/*<p>“哦，谢天谢地，亲爱的！ 亲爱的来吧。 我担心你在树林里迷路了！“</p>*/}
                     <p>Grandma said, thinking that it was her granddaughter. </p>

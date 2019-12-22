@@ -22,9 +22,9 @@ export class Page13 extends React.Component {
         return (
             <div className={`${classes.body} align-content-center w-100 h-100 text-center`}>
                 <AskQuestion/>
-                <Audio audio={audio}/>
+                <Audio audio='https://myedmaster.oss-us-east-1.aliyuncs.com/13.mp3'/>
                 <div style={{padding:'50px 0'}}>
-                    <img className="py-2" src={ears} alt="village" width="600" height="400"/>
+                    <img className="py-2" src='https://myedmaster.oss-us-east-1.aliyuncs.com/ears.jpg' alt="village" width="600" height="400"/>
                     <p>“But grandmother! What big ears you have,” as she edged closer. </p>
                     {/*<p>“但是奶奶！ 你有多大的耳朵，“她越来越近了。</p>*/}
                     <p>“The better to hear you with my dear,” the wolf replied. </p>

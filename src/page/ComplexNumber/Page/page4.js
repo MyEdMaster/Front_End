@@ -4,6 +4,7 @@ import {MDBRow, MDBCol,MDBBtn} from 'mdbreact'
 import { InlineMath, BlockMath } from 'react-katex';
 import classes from './index.module.css'
 import {SpeakRecogAnylysis} from "../SpeakModuleAnalysis";
+import {ComplexNumberMenu} from "./Menu";
 
 
 export class ComplexPage4 extends React.Component {
@@ -25,7 +26,7 @@ export class ComplexPage4 extends React.Component {
                 </div>
                 <MDBRow>
                     <MDBCol size="2">
-
+                        <ComplexNumberMenu/>
                     </MDBCol>
                     <MDBCol size="8">
                         {/*<div className={classes.ph}>*/}

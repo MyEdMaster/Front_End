@@ -22,11 +22,11 @@
     font-weight: bold;
     color:#90a4ae
 }
-.content:hover {
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
-    border-color: #eee;
-    transition: all 0.2s ease-in-out;
-}
+/*.content:hover {*/
+    /*box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);*/
+    /*border-color: #eee;*/
+    /*transition: all 0.2s ease-in-out;*/
+/*}*/
 .orange{
     font-family: Comic Sans MS;
     color:#F1831D;

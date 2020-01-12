@@ -2,9 +2,9 @@ import React from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 import {Nav} from "../Nav";
 import {FunctionHome} from "./Page/home";
-// import {ComplexPage1} from "./Page/page1";
-// import {ComplexPage2} from "./Page/page2";
-// import {ComplexPage3} from "./Page/page3";
+// import {ComplexIntro} from "./Page/page1";
+// import {ComplexAdd} from "./Page/page2";
+// import {ComplexDivi} from "./Page/page3";
 // import {ComplexFeedback} from "./Page/feedback";
 
 import classes from './index.module.css'
@@ -63,15 +63,15 @@ export class Function extends React.Component {
                   />
                   {/*<Route*/}
                       {/*path={`${this.props.match.url}/page1`}*/}
-                      {/*component={routeProps => <ComplexPage1 {...routeProps} />}*/}
+                      {/*component={routeProps => <ComplexIntro {...routeProps} />}*/}
                   {/*/>*/}
                   {/*<Route*/}
                       {/*path={`${this.props.match.url}/page2`}*/}
-                      {/*component={routeProps => <ComplexPage2 {...routeProps} />}*/}
+                      {/*component={routeProps => <ComplexAdd {...routeProps} />}*/}
                   {/*/>*/}
                   {/*<Route*/}
                       {/*path={`${this.props.match.url}/page3`}*/}
-                      {/*component={routeProps => <ComplexPage3 {...routeProps} />}*/}
+                      {/*component={routeProps => <ComplexDivi {...routeProps} />}*/}
                   {/*/>*/}
                   {/*<Route*/}
                       {/*path={`${this.props.match.url}/feedback`}*/}

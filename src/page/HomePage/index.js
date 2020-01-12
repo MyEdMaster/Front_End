@@ -97,6 +97,7 @@ class HomePageReact extends React.Component {
                                 }}
                             >
                                 <MDBSideNavItem className={classes.subMenu} onClick={() => {this.props.history.push('/rrh/cover');}}>Little Red Riding Hood</MDBSideNavItem>
+                                <MDBSideNavItem className={classes.subMenu} onClick={() => {this.props.history.push('/hapcover');}}>Horse and Porcupine</MDBSideNavItem>
                                 {/*<MDBSideNavItem>Registration form</MDBSideNavItem>*/}
                             </MDBSideNavCat>
                             <MDBSideNavCat
@@ -209,7 +210,14 @@ class HomePageReact extends React.Component {
 
                                             onClick={() => {this.props.history.push('/rrh/cover');}}
                                         >
-                                            <span className={classes.font1}>Story 1: Little Red Riding Hood.</span>
+                                            <span className={classes.font1}>Story 1: Little Red Riding Hood</span>
+                                        </p>
+                                        <p
+                                            className={classes.reading}
+
+                                            onClick={() => {this.props.history.push('/hapcover');}}
+                                        >
+                                            <span className={classes.font1}>Story 2: Horse and Porcupine</span>
                                         </p>
                                         <p className={classes.font2}>
                                             Expect more in the future...

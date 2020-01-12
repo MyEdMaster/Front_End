@@ -5,10 +5,13 @@ import {BrowserRouter, HashRouter} from 'react-router-dom';
 import 'react-animated-router/animate.css';
 
 import {RRH} from "./page/RRH";
+import {RrhPage} from "./page/RRH/Page";
 import {HomePage} from "./page/HomePage";
 import {ComplexNumber} from "./page/ComplexNumber";
 import {TestPage} from "./page/test-page";
 import {Function} from "./page/Function";
+import {HapPage} from "./page/HAP";
+import {HapCover} from "./page/HAP/cover";
 
 export class App extends Component {
     render() {
@@ -27,6 +30,18 @@ export class App extends Component {
                     <Route
                         path="/rrh"
                         component={routeProps => <RRH {...routeProps} />}
+                    />
+                    <Route
+                        path="/rrh2/:id"
+                        component={routeProps => <RrhPage {...routeProps} />}
+                    />
+                    <Route
+                        path="/hap/:id"
+                        component={routeProps => <HapPage {...routeProps} />}
+                    />
+                    <Route
+                        path="/hapcover"
+                        component={routeProps => <HapCover {...routeProps} />}
                     />
                     <Route
                         path="/complex"

@@ -8,6 +8,7 @@ import {handleSyn} from "../../RRH/Component/speech-syn";
 import {cancelSyn} from "../../RRH/Component/speech-syn";
 import {url} from "../../../tool/fetch-help";
 import Joyride from 'react-joyride';
+import {ComplexNumberMenu} from "./Menu";
 
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 const recognition = new SpeechRecognition();
@@ -226,7 +227,7 @@ export class ComplexFeedback extends React.Component {
                     </div>
                     <MDBRow>
                         <MDBCol size="2">
-
+                            <ComplexNumberMenu/>
                         </MDBCol>
                         <MDBCol size="8">
                             <div className={classes2.ph}>

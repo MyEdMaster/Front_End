@@ -4,9 +4,10 @@ import {MDBRow, MDBCol,MDBBtn} from 'mdbreact'
 import { InlineMath, BlockMath } from 'react-katex';
 
 import classes from './index.module.css'
+import {ComplexNumberMenu} from "./Menu";
 
 
-export class ComplexPage1 extends React.Component {
+export class ComplexIntro extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -29,7 +30,7 @@ export class ComplexPage1 extends React.Component {
 
                 <MDBRow>
                     <MDBCol size="3">
-
+                        <ComplexNumberMenu/>
                     </MDBCol>
                     <MDBCol size="6" className={classes.font3}>
                         <Video url='https://myedmaster.oss-us-east-1.aliyuncs.com/complex1.mp4'/>
@@ -142,7 +143,7 @@ export class ComplexPage1 extends React.Component {
                         <MDBBtn
                             color="deep-purple lighten-1"
                             className={`${classes.btn} w-100 mt-3`}
-                            onClick={() => {this.props.history.push('/complex/page2');}}
+                            onClick={() => {this.props.history.push('/complex/add');}}
                         >Next Lesson</MDBBtn>
                     </MDBCol>
                 </MDBRow>

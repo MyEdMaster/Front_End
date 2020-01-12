@@ -37,6 +37,8 @@ export class AskQuestionComplex extends React.Component {
             q3:'',
             change:false,
             tag:0,
+            button:'',
+            example:'',
             defaultQuestion:'',
             listening: false,
             speechState:'Click to start...',
@@ -55,6 +57,7 @@ export class AskQuestionComplex extends React.Component {
         };
         this.toggleListen = this.toggleListen.bind(this)
         this.handleListen = this.handleListen.bind(this)
+        this.Button = this.Button.bind(this)
 
     }
     myClick=(text)=>{
@@ -69,7 +72,59 @@ export class AskQuestionComplex extends React.Component {
             answer:''
         });
     }
-
+    Button = (text) => {
+        if (text === 1 && this.state.backend.example1_exist === '1') {
+                return (
+                    <MDBBtn
+                        color='white'
+                        size='sm'
+                        className='py-0'
+                        style={{borderRadius: '5px'}}
+                        onClick={() => {
+                                this.setState({
+                                    example: 'e.g.'+ this.state.backend.example1
+                                })
+                        }}
+                    >
+                        show example
+                    </MDBBtn>
+                )
+        }
+        if (text === 2 && this.state.backend.example2_exist === '1') {
+            return (
+                <MDBBtn
+                    color='white'
+                    size='sm'
+                    className='py-0'
+                    style={{borderRadius: '5px'}}
+                    onClick={() => {
+                        this.setState({
+                            example: 'e.g.'+ this.state.backend.example2
+                        })
+                    }}
+                >
+                    show example
+                </MDBBtn>
+            )
+        }
+        if (text === 3 && this.state.backend.example3_exist === '1') {
+            return (
+                <MDBBtn
+                    color='white'
+                    size='sm'
+                    className='py-0'
+                    style={{borderRadius: '5px'}}
+                    onClick={() => {
+                        this.setState({
+                            example: 'e.g.'+ this.state.backend.example3
+                        })
+                    }}
+                >
+                    show example
+                </MDBBtn>
+            )
+        }
+    };
 
     searchAnswer=(value)=>{
         cancelSyn()
@@ -91,7 +146,8 @@ export class AskQuestionComplex extends React.Component {
                         this.setState({
                             hints:'',
                             answer:answer.answer1,
-                            tag:1
+                            tag:1,
+                            example:this.Button(1)
                         });
                         handleSyn((answer.answer1.replace('?', '.')));
                         break;
@@ -109,7 +165,8 @@ export class AskQuestionComplex extends React.Component {
                     case '3':
                         this.setState({
                             hints:'The words don not add up',
-                            tag:3
+                            tag:3,
+                            example:''
                         });
                         handleSyn('The words don not add up')
                 }
@@ -201,8 +258,6 @@ export class AskQuestionComplex extends React.Component {
 
     render() {
         const { steps } = this.state;
-
-
         return (
             <div>
                 <Joyride
@@ -317,8 +372,9 @@ export class AskQuestionComplex extends React.Component {
                                             onClick={()=>{
                                                 this.setState({
                                                     tag:1,
-                                                    hint:'',
-                                                    answer:this.state.backend.answer1
+                                                    hints:'',
+                                                    answer:this.state.backend.answer1,
+                                                    example:this.Button(1),
                                                 })
                                                 handleSyn(this.state.backend.answer1)
                                             }}
@@ -331,7 +387,8 @@ export class AskQuestionComplex extends React.Component {
                                                 this.setState({
                                                     tag:1,
                                                     hints:'',
-                                                    answer:this.state.backend.answer2
+                                                    answer:this.state.backend.answer2,
+                                                    example:this.Button(2)
                                                 })
                                                 handleSyn(this.state.backend.answer2)
                                             }}
@@ -344,7 +401,8 @@ export class AskQuestionComplex extends React.Component {
                                                 this.setState({
                                                     tag:1,
                                                     hints:'',
-                                                    answer:this.state.backend.answer3
+                                                    answer:this.state.backend.answer3,
+                                                    example:this.Button(3)
                                                 })
                                                 handleSyn(this.state.backend.answer3)
                                             }}
@@ -357,7 +415,8 @@ export class AskQuestionComplex extends React.Component {
                                                 this.setState({
                                                     tag:1,
                                                     hints:'Could you rephrase the question？',
-                                                    answer:''
+                                                    answer:'',
+                                                    example:''
                                                 })
                                                 handleSyn('Could you rephrase the question')
                                             }}
@@ -369,7 +428,15 @@ export class AskQuestionComplex extends React.Component {
                                 ):(
                                     <div>
                                         <p className={classes.pb3}>{this.state.hints}</p>
-                                        <p className={classes.pb2}>{this.state.answer}</p>
+                                        <p
+                                            className={classes.pb2}
+                                        >
+                                            {this.state.answer}<span>{this.state.button}</span>
+                                        </p>
+                                        <p className={classes.pb4}>
+                                            {this.state.example}
+                                        </p>
+
                                     </div>
 
                                 )}

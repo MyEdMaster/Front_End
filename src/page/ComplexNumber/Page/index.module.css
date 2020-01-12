@@ -16,7 +16,6 @@
      font-size: 70px;
      font-style: normal;
      font-weight: 400;
-     padding: 25px;
      font-variant: normal;
      line-height: 77px;
      text-align: center;
@@ -63,12 +62,12 @@
     font-style: normal;
     font-weight: 500;
     font-variant: normal;
-    line-height: 30px;
+    line-height: 24px;
     text-align: left;
 }
 .euq{
     font-family: Comic Sans MS;
-    font-size: 30px;
+    font-size: 24px;
     font-style: normal;
     font-variant: normal;
     font-weight: 400;
@@ -87,7 +86,7 @@
 
 .btn{
     font-family: 'Rajdhani', sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     background-color: #7e57c2;
     border-radius: 10px;
     text-align: center;
@@ -96,20 +95,20 @@
     border-radius: 20px;
     transition: all 0.2s ease-in-out;
 }
-.ph{
-    font-family: 'Rajdhani', sans-serif;
-    font-size: 20px;
-    font-weight: bolder;
-}
+/*.ph{*/
+    /*font-family: 'Rajdhani', sans-serif;*/
+    /*font-size: 20px;*/
+    /*font-weight: bolder;*/
+/*}*/
 .ph2{
     font-family: 'Rajdhani', sans-serif;
-    font-size: 30px;
+    font-size: 24px;
     font-weight: bolder;
     text-align: center;
 }
 .ph{
     font-family: 'Rajdhani', sans-serif;
-    font-size: 30px;
+    font-size: 24px;
     font-weight: bolder;
     text-align: center;
 }

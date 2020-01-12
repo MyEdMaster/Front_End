@@ -1,14 +1,14 @@
 import React from 'react';
 import {Video} from "../video-component/video";
-import {MDBRow, MDBCol, MDBBtn, MDBCard, MDBIcon,MDBModal,MDBInput, MDBModalFooter} from 'mdbreact'
+import {MDBRow, MDBCol, MDBBtn, MDBCard, MDBIcon, MDBModal, MDBInput, MDBModalFooter} from 'mdbreact'
 import { InlineMath, BlockMath } from 'react-katex';
+
 import classes from './index.module.css'
-import {url} from "../../../tool/fetch-help";
+import {ComplexNumberMenu} from "./Menu";
 import Joyride from 'react-joyride';
+import {url} from "../../../tool/fetch-help";
 
-
-
-export class ComplexPage3 extends React.Component {
+export class ComplexSubt extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -26,11 +26,6 @@ export class ComplexPage3 extends React.Component {
             finishText:'',
 
             steps: [
-                // {
-                //     target: ".test",
-                //     placement: 'bottom',
-                //     content: "Here is a complex number problem"
-                // },
                 {
                     target: ".problem",
                     placement: 'bottom',
@@ -50,18 +45,16 @@ export class ComplexPage3 extends React.Component {
         };
 
     }
+    componentDidMount() {
+        this.node.scrollIntoView();
+    }
     toggle = nr => () => {
-        let modalNumber = 'modal' + nr
+        let modalNumber = 'modal' + nr;
         this.setState({
             [modalNumber]: !this.state[modalNumber],
         });
-    }
-    handleChange(event) {
+    };
 
-        this.setState({
-            value: event.target.value,
-        });
-    }
     post = ()=>{
         const option={
             method:'POST',
@@ -77,26 +70,20 @@ export class ComplexPage3 extends React.Component {
                 "answer":this.state.value,
             })
         };
-        fetch(`${url}/complexnumber`,option)
-            .then(response=>response.text())
+        fetch(`${url}/complex_number/2`,option)
+            .then(response=>response.json())
             .then(answer=>{
                 this.setState({
-                    hint:answer.substring(2,answer.length)
+                    hint:answer.content
                 })
-                if (answer.substr(0, 1) === '0'){
+                if (answer.type === '0'){
                     this.setState({
                         isRight:false
                     })
                 }
-                if (answer.substr(0, 1) === '1'){
+                else if (answer.type === '1'){
                     let arr = this.state.answers;
-                    let step= answer.substr(1,1)
-                    if (step === '6'){
-                        this.setState({
-                            finish:true,
-                            finishText:'Finished! You got it.'
-                        })
-                    }
+                    let step= answer.step;
                     arr.push([step, this.state.value])
                     this.setState({
                         answers:arr,
@@ -105,16 +92,25 @@ export class ComplexPage3 extends React.Component {
                         value:''
                     })
                 }
+                else if (answer.type === '2'){
+                    let arr = this.state.answers;
+                    let step= answer.step;
+                    arr.push([step, this.state.value])
+                    this.setState({
+                        answers:arr,
+                        step:step,
+                        isRight:true,
+                        value:'',
+                        finish:true,
+                        finishText:'Finished! You got it.'
+                    })
+                }
             })
-    }
-
-
+    };
     render() {
-
         const { run,steps } = this.state;
         return (
-            <div>
-
+            <div ref={node => this.node = node}>
                 <Joyride
                     steps={steps}
                     continuous={true}
@@ -130,24 +126,21 @@ export class ComplexPage3 extends React.Component {
                         }
                     }}
                 />
-
-
-
                 <div className="d-flex align-items-baseline justify-content-center">
                     <div className={classes.title1}>
-                        COMPLEX NUMBERS:
+                        COMPLEX NUMBERS: &nbsp;
                     </div>
                     <div className={classes.title2}>
-                        &nbsp;Division
+                        Subtraction
                     </div>
                 </div>
 
                 <MDBRow>
                     <MDBCol size="3">
-
+                        <ComplexNumberMenu/>
                     </MDBCol>
                     <MDBCol size="6" className={classes.font3}>
-                        <Video url='https://myedmaster.oss-us-east-1.aliyuncs.com/dividingcomplex.mp4'/>
+                        <Video url='https://myedmaster.oss-us-east-1.aliyuncs.com/subtcomplex.mp4'/>
                     </MDBCol>
                 </MDBRow>
                 <MDBRow>
@@ -156,15 +149,16 @@ export class ComplexPage3 extends React.Component {
                     </MDBCol>
                     <MDBCol size="6">
                         <p className={classes.ph}>
-                            Dividing complex numbers can be a lot more challenging.
-                            <tr/><br/>
-                            A <span className={classes.high}>complex number</span> is a combination of a <span className={classes.high}>real number</span> and an <span className={classes.high}>imaginary number</span>.
-                            We generally write <span className={classes.high}>complex numbers</span> in
-                            &nbsp;<InlineMath>a + bi</InlineMath>&nbsp;form, where  &nbsp;<InlineMath>a</InlineMath>&nbsp;
-                            is the real number and&nbsp;<InlineMath>bi</InlineMath>&nbsp;is the imaginary number. For example,
-                            &nbsp;<InlineMath>3 + 7i</InlineMath>&nbsp;or&nbsp;<InlineMath>5 - 2i</InlineMath>&nbsp;.
-                            <tr/><br/>
-                            Typically, whether adding, subtracting, multiplying or dividing complex numbers, we enclose each complex number inside parentheses like this:
+                            Just like adding complex numbers, subtracting them is fairly simple
+                            {/*Adding <span className={classes.high}>complex numbers</span> is actually rather straightforward and simple.*/}
+                            <br/>
+                            Remember, a complex number is a combination of a real number and an imaginary number.
+                            We generally write complex numbers in &nbsp;<InlineMath>a + bi</InlineMath>&nbsp;
+                            form,  where a is the real number and bi is the imaginary number.  For example,
+                            &nbsp;<InlineMath>3 + 7i</InlineMath>&nbsp;or
+                            &nbsp;<InlineMath>5 - 2i</InlineMath>&nbsp;.
+                            <br/>
+                            Also, whether adding, subtracting, multiplying or dividing complex numbers, we enclose each complex number inside parentheses like this
                         </p>
                         <br/>
 
@@ -178,132 +172,39 @@ export class ComplexPage3 extends React.Component {
                         </MDBRow>
                         <br/>
                         <p className={classes.ph}>
-                            Dividing complex numbers can be a lot more challenging.
+                            Again, just like when adding complex numbers, you can only combine ‘like terms’, meaning you can only combine the real part of each number together and the imaginary part of each number together.
                             <tr/><br/>
-                            When adding or subtracting complex numbers, you can only combine <span className={classes.high}>like terms</span>,
-                            meaning you can only combine the real part of each number together and the imaginary part of each number together.
-                            <tr/><br/>
-                            So, using the problem&nbsp;<InlineMath>(6 - 5i) + (2 + 3i)</InlineMath>
-                            , you would first combine the real parts, the&nbsp;<InlineMath>6</InlineMath>&nbsp;
-                            and the&nbsp;<InlineMath>2</InlineMath>&nbsp;, to get
-                            &nbsp;<InlineMath>8</InlineMath>&nbsp;; and then you would combine the imaginary parts, the
-                            &nbsp;<InlineMath>-5i</InlineMath>&nbsp;and the&nbsp;<InlineMath>3i</InlineMath>&nbsp;,
-                            to get&nbsp;<InlineMath>-2i</InlineMath>&nbsp;. This leaves you with the complex number
-                            &nbsp;<InlineMath>8 - 2i</InlineMath>&nbsp;.
-                            <tr/><br/>
+                            Let’s take a look at a problem, &nbsp;<InlineMath>(8 + 3i) - (5 - 6i)</InlineMath>&nbsp;
 
-                            On a side note, since we are dealing with addition, you could also simply rewrite the problem without the parentheses,
-                            &nbsp;&nbsp;<InlineMath>(6 - 5i) + (2 + 3i)</InlineMath>, and then combine like terms.
-                            That’s completely legal in the case of an addition problem, but keep in mind it doesn’t work exactly like that for subtraction. We’ll talk about that when we discuss subtracting complex numbers.
                             <tr/><br/>
-                            Let’s try another.
+                            Since this is subtracting and we’re dealing with parentheses, the first and most important thing we want to do is distribute the negative to both the real part,
+                            the &nbsp;<InlineMath>5</InlineMath>, and the imaginary part, the &nbsp;<InlineMath>-6i</InlineMath>, of the complex number that follows it.
+                            Doing so leaves you with &nbsp;<InlineMath>8 + 3i - 5 + 6i</InlineMath>.  After you distribute the negative, you simply combine the real parts,
+                            the &nbsp;<InlineMath>8</InlineMath>&nbsp; and the &nbsp;<InlineMath>-5</InlineMath>, to get &nbsp;<InlineMath>3</InlineMath>; and then the imaginary parts,
+                            the &nbsp;<InlineMath>3i</InlineMath>&nbsp; and the &nbsp;<InlineMath>6i</InlineMath>, to get &nbsp;<InlineMath>9i</InlineMath>.  This leaves you with the
+                            complex number &nbsp;<InlineMath>3 + 9i</InlineMath>.
                             <tr/><br/>
-
-                            Given
-                            &nbsp;<InlineMath>(-3 + 2i) + (7 - i)</InlineMath>&nbsp;. Combine the real parts,
-                            &nbsp;<InlineMath>-3 + 7</InlineMath>&nbsp;, to get&nbsp;<InlineMath>4</InlineMath>.
-                            Then combine the imaginary parts,&nbsp;<InlineMath>2i - i</InlineMath>,
-                            to get&nbsp;<InlineMath>i</InlineMath>. You are left with the complex number
-                            &nbsp;<InlineMath>4 + i</InlineMath>.
+                            Cake.  Let’s try another.
                             <tr/><br/>
-
-                            Nothing to it, is there? Here are some more for you to try.
+                            Given &nbsp;<InlineMath>(7-4i) - (9-6i)</InlineMath>.  Distribute the negative to get &nbsp;<InlineMath>7 - 4i - 9 + 6i</InlineMath>.
+                            Combine the real parts, &nbsp;<InlineMath>7 - 9</InlineMath>, to get &nbsp;<InlineMath>-2</InlineMath>.  Then combine the imaginary parts,
+                            &nbsp;<InlineMath>-4i + 6i</InlineMath>, to get &nbsp;<InlineMath>2i</InlineMath>.  You are left with the complex number &nbsp;<InlineMath>-2 + 2i</InlineMath>.
                             <tr/><br/>
-
-                            Before we get into dividing complex numbers, you’ll need to stretch your brain a bit and
-                            think back to that thing called a <span className={classes.high}>conjugate</span>.
-                            <tr/><br/>
-                            To form the conjugate of a <span className={classes.high}>binomial</span>, you simply change the sign between the two terms. Given the binomial
-                            &nbsp;<InlineMath>2 + 5x</InlineMath>, the conjugate would be
-                            &nbsp;<InlineMath>2 - 5x</InlineMath>. Given the binomial
-                            &nbsp;<InlineMath>3 - 8y</InlineMath>, the conjugate would be
-                            &nbsp;<InlineMath>3 + 8y</InlineMath>.
-                            <tr/><br/>
-                            And, since a complex number is also a binomial comprised of a real term and an
-                            &nbsp;<span className={classes.high}>imaginary term</span>, given the complex number
-                            &nbsp;<InlineMath>5 - 3i</InlineMath>, the complex conjugate would be
-                            &nbsp;<InlineMath>5 + 3i</InlineMath>.
-                            <tr/><br/>
-
-                            Easy. Alright, now let’s get back to dividing complex numbers.
-                            <tr/><br/>
-
-                            The first step in dividing complex numbers is to multiply the numerator and denominator by the complex conjugate of the denominator. Don’t panic, it’s actually very simple. Take a look.
-                            <BlockMath>(3 -2i)/(5 + 4i)</BlockMath>
-                            <tr/><br/>
-                            To form the conjugate of the denominator,
-                            &nbsp;<InlineMath>(5 + 4i)</InlineMath>, simply change the sign between the two terms and get
-                            &nbsp;<InlineMath>(5 - 4i)</InlineMath>. Now, multiply numerator and denominator by the conjugate,
-                            &nbsp;<InlineMath>(5 - 4i)</InlineMath>.
-                            <tr/><br/>
-
-                            <BlockMath>(3 -2i)(5 - 4i)/(5 + 4i)(5 - 4i)</BlockMath>
-                            <tr/><br/>
-
-                            FOIL the numerator:
-                            &nbsp;<InlineMath>15 - 12i - 10i + 8i^2</InlineMath>&nbsp;(which becomes
-                            &nbsp;<InlineMath>-8</InlineMath>)&nbsp;and combine like terms to get
-                            &nbsp;<InlineMath>(7 - 22i)</InlineMath>.
-                            <tr/><br/>
-
-                            FOIL the denominator:
-                            &nbsp;<InlineMath>25 - 20i + 20i - 16i^2</InlineMath>&nbsp;(
-                            which becomes &nbsp;<InlineMath>16</InlineMath>) and combine like terms to get
-                            &nbsp;<InlineMath>41</InlineMath>.
-                            <tr/><br/>
-
-                            You end up with
-                            &nbsp;<InlineMath>(7 - 22i)/41</InlineMath>
-                            , but since complex numbers are technically two separate parts and therefore, shouldn’t
-                            share the <span className={classes.high}>denominator</span>, we split the answer into two parts like this
-                            <tr/><br/>
-                            <BlockMath>7/41 - (21/44)i</BlockMath>.
-                            <tr/><br/>
-                            We’ll do another problem.
-                            <tr/><br/>
-                            <BlockMath>(4 + 6i)/(-1 -3i)</BlockMath>.
-                            <tr/><br/>
-
-
-                            First, multiply both <span className={classes.high}>numerator</span> and <span className={classes.high}>denominator</span> by the conjugate of the denominator, which is
-                            &nbsp;<InlineMath>(-1 + 3i)</InlineMath>. Notice how the negative 1 does not change—only
-                            the sign between the two terms changes.
-                            <tr/><br/>
-                            <BlockMath>(4 + 6i)(-1 -3i)/((-1 - 3i)(-1 + 3i))</BlockMath>.
-                            <tr/><br/>
-
-                            FOIL the numerator:
-                            &nbsp;<InlineMath>-4 + 12i - 6i + 18i^2</InlineMath>&nbsp;
-                            (which becomes&nbsp;<InlineMath>-18</InlineMath>)&nbsp;and combine like terms to get
-                            &nbsp;<InlineMath>(-22 + 12i)</InlineMath>.
-                            <tr/><br/>
-
-                            FOIL the denominator:
-                            &nbsp;<InlineMath>1 - 3i + 3i -9i^2</InlineMath>&nbsp;
-                            (which becomes&nbsp;<InlineMath>9</InlineMath>)&nbsp;
-                            and combine like terms to get&nbsp;<InlineMath>10</InlineMath>&nbsp;.
-                            <tr/><br/>
-                            You’re left with
-                            &nbsp;<InlineMath>(-22 + 12i)/10</InlineMath>&nbsp;
-                            which when split becomes
-                            &nbsp;<InlineMath>-22/10 +(12/10)i</InlineMath>; . However, you can further reduce each fraction,
-                            so your final answer is
-                            <tr/><br/>
-                            <BlockMath>-11/5 + (6/5)i</BlockMath>.
-                            <tr/><br/>
-                            Here are some problems for you to try.
-                            <tr/><br/>
+                            See?  There’s nothing complex about subtracting complex numbers.  Just remember, the first and most important step is to distribute the negative to both the real and imaginary parts of the complex number that follows it.  Here are some problems for you to try.
                         </p>
-
-                        <MDBRow className={`${classes.border}`} center>
+                        <MDBRow className={classes.border} center>
                             <p className={classes.ph2}>
-                                <BlockMath>(3 - 2i)/(-4 - 7i)</BlockMath>
-                                <BlockMath>(5 + 4i)/(2 + i)</BlockMath>
-                                <BlockMath>(6 - 3i)/(9 + 3i)</BlockMath>
-                                <BlockMath>(1 - 2i)/(5 - 8i)</BlockMath>
-                                <BlockMath>(-7 + 4i)/(2 - 4i)</BlockMath>
-                                <BlockMath>(3 + 3i)/(-3 - 3i)</BlockMath>
-                                <BlockMath>(5 + i)/(4 - 5i)</BlockMath>
+
+                                <BlockMath>(4-28i) - (16+25i)</BlockMath>
+                                <BlockMath>(-9-3i) - (6-8i)</BlockMath>
+                                <BlockMath>(1-9i) - (-4+2i)</BlockMath>
+                                <BlockMath>(6-i) - (-4+5i)</BlockMath>
+                                <BlockMath>(8-12i) - (-4-12i)</BlockMath>
+                                <BlockMath>(43+18i) - (11+6i)</BlockMath>
+                                <BlockMath>(5+10i) - (-6-9i)</BlockMath>
+                                <BlockMath>(31-13i) - (31-13i)</BlockMath>
+                                <BlockMath>(-15+2i) - (-7-8i)</BlockMath>
+                                <BlockMath>(21+4i) - (13+7i)</BlockMath>
 
                             </p>
                         </MDBRow>
@@ -328,7 +229,7 @@ export class ComplexPage3 extends React.Component {
                                 style={{borderStyle:'solid',borderBottomColor:'#9e9e9e', borderWidth:'0 0 1px 0'}}
                             >
                                 Solve the following:
-                                ({this.state.a} + {this.state.b}i) / ({this.state.c} + {this.state.d}i).
+                                ({this.state.a} + {this.state.b}i) - ({this.state.c} + {this.state.d}i).
                                 Begin your work by first rewriting the problem in 'Step 1' in the worksheet.
                                 <tr/><br/>
                             </p>
@@ -362,7 +263,7 @@ export class ComplexPage3 extends React.Component {
                                         fontWeight:'bolder'
                                     }}
                                 >
-                                    Add your own problem in the form (a + bi) / (c + di). You can set the values of a, b, c, and d below.
+                                    Add your own problem in the form (a + bi) - (c + di). You can set the values of a, b, c, and d below.
                                 </div>
                                 <div className="d-flex justify-content-between">
                                     <MDBInput
@@ -539,7 +440,7 @@ export class ComplexPage3 extends React.Component {
                         </div>
                     </MDBCol>
                 </MDBRow>
-
+                <br/>
                 <MDBRow center>
                     <MDBCol size="2">
                         <MDBBtn
@@ -552,10 +453,11 @@ export class ComplexPage3 extends React.Component {
                         <MDBBtn
                             color="deep-purple lighten-1"
                             className={`${classes.btn} w-100 mt-3`}
-                            onClick={() => {this.props.history.push('/complex/page4');}}
+                            onClick={() => {this.props.history.push('/complex/mult');}}
                         >Next Lesson</MDBBtn>
                     </MDBCol>
                 </MDBRow>
+
             </div>
 
         );

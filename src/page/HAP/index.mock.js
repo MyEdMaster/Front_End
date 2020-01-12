@@ -1,0 +1,96 @@
+export const hap = {
+    page:[
+        {
+            id:1,
+            content:'Once upon a time, there were a horse and a porcupine who lived in the same pasture. ',
+            highlight:['hood'],
+            image_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap1.png',
+            audio_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap1.mp3',
+        },
+        {
+            id:2,
+            content:'Every day, many people would come to see the horse, who was big, strong and quite beautiful.  Each one would ask the horse for a ride and when on the horse\'s back would urge her to go faster and faster. ',
+            highlight:[],
+            image_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap2.png',
+            audio_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap2.mp3',
+        },
+        {
+            id:3,
+            content:'At the end of each day, the horse was quite exhausted.  One day, the porcupine said to the horse, \"It seems that, every day, you are exhausted by the time the day is over.  Maybe you shouldn\'t give so many rides.\"',
+            highlight:['strangers'],
+            image_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap3.png',
+            audio_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap3.mp3',
+        },
+        {
+            id:4,
+            content:'The horse snapped back, "You\'re just jealous that no one comes to visit you.  Look at all the friends I have.  You don\'t have any. Who could ride you anyway?  ',
+            highlight:['chasing'],
+            image_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap4.png',
+            audio_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap4.mp3',
+        },
+        {
+            id:5,
+            content:'You’re too small and your quills would hurt whoever sat on them."  This saddened the porcupine who felt he was only looking out for his friend\'s best interest.',
+            highlight:[],
+            image_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap5.png',
+            audio_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap5.mp3',
+        },
+        {
+            id:6,
+            content:'One day, an unusually large crowd of people showed up to the pasture.  That day, they pushed the horse harder and harder to go faster and faster.  The faster she went, the more the crowd cheered, but the more tired she became. ',
+            highlight:[],
+            image_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap6.png',
+            audio_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap6.mp3',
+        },
+        {
+            id:7,
+            content:'Finally, she was so exhausted, the porcupine could stay silent no longer.  "You must stop for today.  You\'re too tired."  ',
+            highlight:[],
+            image_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap7.png',
+            audio_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap7.mp3',
+        },
+        {
+            id:8,
+            content:'Though exhausted, the horse summoned a furious outburst, "You\'re just jealous that these people love me and not you.  I will show you!  I will give the next person the best ride ever!"',
+            highlight:[],
+            image_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap8.png',
+            audio_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap8.mp3',
+        },
+        {
+            id:9,
+            content:'With that, the next person jumped on the horse\'s back and she took off like a shot, running faster than ever. "Faster, faster!" the ride yelled and the horse obliged.  Just then, the horse stepped into a hole and came crashing to the ground, her leg broken. ',
+            highlight:[],
+            image_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap9.png',
+            audio_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap9.mp3',
+        },
+        {
+            id:10,
+            content:'"Help me!" the horse cried.  "What good are you now?" said the rider.  "You can no longer run."  Then, all of the people left the pasture, leaving the horse in misery.  ',
+            highlight:[],
+            image_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap10.png',
+            audio_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap10.mp3',
+        },
+        {
+            id:11,
+            content:'The porcupine came up to the horse and said, "I will take care of your leg." and he helped nurse the horse back to health.  ',
+            highlight:[],
+            image_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap11.png',
+            audio_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap11.mp3',
+        },
+        {
+            id:12,
+            content:'"Why are you doing this for me?" said the horse.  "After the way I treated you, why didn\'t you leave as well?"',
+            highlight:[],
+            image_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap12.png',
+            audio_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap12.mp3',
+        },
+        {
+            id:13,
+            content:'The porcupine replied, "A true friend doesn\'t think about what he can get from you, but is someone who is there for you no matter what."',
+            highlight:[],
+            image_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap13.png',
+            audio_url:'https://myedmaster.oss-us-east-1.aliyuncs.com/hap13.mp3',
+        },
+
+    ]
+}

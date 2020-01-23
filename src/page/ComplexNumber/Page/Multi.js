@@ -7,6 +7,7 @@ import classes from './index.module.css'
 import {ComplexNumberMenu} from "./Menu";
 import {url} from "../../../tool/fetch-help";
 import Joyride from 'react-joyride';
+import {deleteMark} from "../../../tool/delete-mark";
 
 export class ComplexMult extends React.Component {
     constructor(props) {
@@ -43,6 +44,7 @@ export class ComplexMult extends React.Component {
                 }
             ]
         };
+        this.mark = deleteMark(this.state.a, this.state.b, this.state.c, this.state.d)
 
     }
     componentDidMount() {
@@ -136,18 +138,18 @@ export class ComplexMult extends React.Component {
                 </div>
 
                 <MDBRow>
-                    <MDBCol size="3">
+                    <MDBCol size="2">
                         <ComplexNumberMenu/>
                     </MDBCol>
-                    <MDBCol size="6" className={classes.font3}>
+                    <MDBCol size="8" className={classes.font3}>
                         <Video url='https://myedmaster.oss-us-east-1.aliyuncs.com/multcomplex.mp4'/>
                     </MDBCol>
                 </MDBRow>
                 <MDBRow>
-                    <MDBCol size="3">
+                    <MDBCol size="2">
 
                     </MDBCol>
-                    <MDBCol size="6">
+                    <MDBCol size="8">
                         <p className={classes.ph}>
                             You probably know by now that a complex number is a combination of a real number and an imaginary number.
                             We generally write complex numbers in &nbsp;<InlineMath>a + bi</InlineMath>&nbsp; form,  where a is the real number and &nbsp;<InlineMath> bi </InlineMath>&nbsp; is the imaginary number.
@@ -265,7 +267,7 @@ export class ComplexMult extends React.Component {
                                 style={{borderStyle:'solid',borderBottomColor:'#9e9e9e', borderWidth:'0 0 1px 0'}}
                             >
                                 Solve the following:
-                                ({this.state.a} + {this.state.b}i) * ({this.state.c} + {this.state.d}i).
+                                ({this.state.a} {this.mark[0]} {this.mark[1]}i) * ({this.state.c} {this.mark[2]} {this.mark[3]}i).
                                 Begin your work by first rewriting the problem in 'Step 1' in the worksheet.
                                 <tr/><br/>
                             </p>

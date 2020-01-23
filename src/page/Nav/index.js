@@ -38,31 +38,20 @@ class NavReact extends React.Component {
                             hidden
                         >
                             <div
-                                className="py-3"
+                                className="py-1"
+                                onClick={() => {this.props.history.push('/home');}}
                                 style={{
                                     cursor:'pointer',
-                                    fontFamily:'Comic Sans MS',
-                                    fontSize: '22px',
-                                    fontStyle: 'normal',
-                                    color:'white',
-                                    fontWeight: '700',
-                                    textAlign:'center'
+                                    textAlign:'center',
+                                    borderStyle:'solid',
+                                    borderWidth:'0 0 1px 0',
+                                    borderColor:'#f5f5f5'
                                 }}
-                                onClick={() => {this.props.history.push('/home');}}>
-                                MyEdMaster
-                            </div>
+                            >
 
-                            <MDBInput
-                                type="text"
-                                hint="Search"
-                                style={{
-                                    fontFamily:'Comic Sans MS',
-                                    fontSize:'22px',
-                                    color: "#ffffff",
-                                    padding: "0 10px 8px 30px",
-                                    boxSizing: "border-box"
-                                }}
-                            />
+                                <img className='img-fluid w-75 justify-content-center' src='https://myedmaster.oss-us-east-1.aliyuncs.com/A-list Empire logo.png'/>
+
+                            </div>
                             <MDBSideNavNav>
                                 <MDBSideNavCat
                                     name="Reading"
@@ -89,6 +78,7 @@ class NavReact extends React.Component {
                                     }}
                                 >
                                     <MDBSideNavItem className={classes.subMenu} onClick={() => {this.props.history.push('/complex');}}>Complex Numbers</MDBSideNavItem>
+                                    <MDBSideNavItem className={classes.subMenu} onClick={() => {this.props.history.push('/foil');}}>Multiplying Binomials Using FOIL</MDBSideNavItem>
 
                                 </MDBSideNavCat>
 
@@ -128,21 +118,20 @@ class NavReact extends React.Component {
                                 </MDBNavItem>
 
                             </MDBNavbarNav>
-                            <MDBNavbarNav center>
+                            <MDBNavbarNav left>
                                 <MDBNavItem
                                     className="d-none d-md-inline"
-
-                                    style={{
-                                        cursor:'pointer',
-                                        fontFamily:'Comic Sans MS',
-                                        fontSize: '25px',
-                                        fontStyle: 'normal',
-                                        color:'white',
-                                        fontWeight: '700',
-                                    }}
                                     onClick={() => {this.props.history.push('/home');}}
+                                    // style={{
+                                    //     cursor:'pointer',
+                                    //     fontFamily:'Comic Sans MS',
+                                    //     fontSize: '25px',
+                                    //     fontStyle: 'normal',
+                                    //     color:'white',
+                                    //     fontWeight: '700',
+                                    // }}
                                 >
-                                    MyEdMaster
+                                    <img className='img-fluid' style={{height:'44px'}} src='https://myedmaster.oss-us-east-1.aliyuncs.com/A-list Empire logo.png'/>
                                 </MDBNavItem>
                             </MDBNavbarNav>
                         </MDBCollapse>

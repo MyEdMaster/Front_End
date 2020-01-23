@@ -281,11 +281,11 @@ export class AskQuestion extends React.Component {
 
                 <div className={classes.fixed}>
                     <button className="button button rrh" onClick={this.toggle(1)}>
-                        <img src={llrh} alt="Little Red Riding Hood" height="142" width="100"/></button>
+                        <img src='https://myedmaster.oss-us-east-1.aliyuncs.com/llrh.jpg' alt="Little Red Riding Hood" height="142" width="100"/></button>
                 </div>
                 <div className={classes.fixed1}>
                     <button className="button button bbw" onClick={this.toggle(2)}><img
-                        src={bbw} alt="Big Bad Wolf" height="142" width="100"/></button>
+                        src='https://myedmaster.oss-us-east-1.aliyuncs.com/bbw.jpg' alt="Big Bad Wolf" height="142" width="100"/></button>
                 </div>
                 <MDBModal isOpen={this.state.modal1} toggle={this.toggle(1)} centered size="lg">
 

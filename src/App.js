@@ -12,6 +12,8 @@ import {TestPage} from "./page/test-page";
 import {Function} from "./page/Function";
 import {HapPage} from "./page/HAP";
 import {HapCover} from "./page/HAP/cover";
+import {HomePage2} from "./page/HomePage2";
+import {Foil} from "./page/Foil";
 
 export class App extends Component {
     render() {
@@ -32,6 +34,10 @@ export class App extends Component {
                         component={routeProps => <RRH {...routeProps} />}
                     />
                     <Route
+                        path="/h2"
+                        component={routeProps => <HomePage2 {...routeProps} />}
+                    />
+                    <Route
                         path="/rrh2/:id"
                         component={routeProps => <RrhPage {...routeProps} />}
                     />
@@ -50,6 +56,10 @@ export class App extends Component {
                     <Route
                         path="/function"
                         component={routeProps => <Function {...routeProps} />}
+                    />
+                    <Route
+                        path="/foil"
+                        component={routeProps => <Foil {...routeProps} />}
                     />
                     <Redirect to="/home"/>
                 </Switch>

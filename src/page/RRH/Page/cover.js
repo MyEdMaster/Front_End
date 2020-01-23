@@ -1,6 +1,4 @@
 import React from 'react';
-import llrh from '../Lib/llrh.jpg'
-import bbw from '../Lib/bbw.jpg'
 import classes from './index.module.css'
 export class RRHCover extends React.Component {
     constructor(props) {
@@ -28,7 +26,7 @@ export class RRHCover extends React.Component {
                         // onClick={()=>{this.myClick("Try asking Little Red Riding Hood a question!")}}
                 >
                     <img
-                        src={llrh}
+                        src='https://myedmaster.oss-us-east-1.aliyuncs.com/llrh.jpg'
                         alt="Little Red Riding Hood"
                         height="450"
                         width="317"/>
@@ -37,7 +35,7 @@ export class RRHCover extends React.Component {
                         //onClick={()=>{this.myClick('Try asking the Big Bad Wolf a question!')}}
                 >
                     <img
-                        src={bbw}
+                        src='https://myedmaster.oss-us-east-1.aliyuncs.com/bbw.jpg'
                         alt="Big Bad Wolf"
                         height="450"
                         width="317"/>

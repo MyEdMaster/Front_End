@@ -29,18 +29,18 @@ export class ComplexIntro extends React.Component {
                 </div>
 
                 <MDBRow>
-                    <MDBCol size="3">
+                    <MDBCol size="2">
                         <ComplexNumberMenu/>
                     </MDBCol>
-                    <MDBCol size="6" className={classes.font3}>
+                    <MDBCol size="8" className={classes.font3}>
                         <Video url='https://myedmaster.oss-us-east-1.aliyuncs.com/complex1.mp4'/>
                     </MDBCol>
                 </MDBRow>
                 <MDBRow>
-                    <MDBCol size="3">
+                    <MDBCol size="2">
 
                     </MDBCol>
-                    <MDBCol size="6">
+                    <MDBCol size="8">
                         <p className={classes.ph}>
                             Up until now, all the math you've done has more than likely focused around
                             the <span className={classes.high}>real numbers</span> which consists of

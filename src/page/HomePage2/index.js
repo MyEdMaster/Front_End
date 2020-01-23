@@ -18,7 +18,6 @@ import {
     MDBRow,
     MDBCol,
     MDBMask,
-    MDBBtn, MDBNavbarBrand, MDBNavLink
 } from "mdbreact";
 import classes from './index.module.css'
 import bg from './Lib/homepage.jpg'
@@ -55,7 +54,6 @@ class HomePageReact extends React.Component {
                         mask="strong"
                         hidden
                     >
-
                         <div
                             className="py-1"
                             onClick={() => {this.props.history.push('/home');}}
@@ -68,7 +66,7 @@ class HomePageReact extends React.Component {
                             }}
                         >
 
-                            <img className='img-fluid w-75 justify-content-center' src='https://myedmaster.oss-us-east-1.aliyuncs.com/A-list Empire logo.png'/>
+                              <img className='img-fluid w-75 justify-content-center' src='https://myedmaster.oss-us-east-1.aliyuncs.com/A-list Empire logo.png'/>
 
                         </div>
                         <MDBSideNavNav>
@@ -97,8 +95,6 @@ class HomePageReact extends React.Component {
                                 }}
                             >
                                 <MDBSideNavItem className={classes.subMenu} onClick={() => {this.props.history.push('/complex');}}>Complex Numbers</MDBSideNavItem>
-                                <MDBSideNavItem className={classes.subMenu} onClick={() => {this.props.history.push('/foil');}}>Multiplying Binomials Using FOIL</MDBSideNavItem>
-
 
                             </MDBSideNavCat>
 
@@ -121,7 +117,7 @@ class HomePageReact extends React.Component {
                 <Router>
 
 
-                    <MDBNavbar className="deep-purple lighten-1" expand="md" fixed="top" >
+                    <MDBNavbar className="deep-purple lighten-1" expand="md" fixed="top" transparent>
 
                         <MDBNavbarToggler onClick={this.handleTogglerClick} />
                         <MDBCollapse isOpen={this.state.collapsed} navbar>
@@ -139,7 +135,6 @@ class HomePageReact extends React.Component {
                                         <MDBIcon icon="bars" size="2x" className="mt-1" style={{color:'white'}}/>
                                     </div>
                                 </MDBNavItem>
-
                             </MDBNavbarNav>
                             <MDBNavbarNav left>
                                 <MDBNavItem
@@ -165,14 +160,10 @@ class HomePageReact extends React.Component {
                     <MDBMask
                         className="justify-content-center align-items-center"
                         overlay="white-light"
-
                     >
-                        <div style={{height:'62.5px'}}>
-
-                        </div>
-
-                        <MDBContainer>
-                            <section className="text-center my-5">
+                        <div style={{height:'62.5px'}}>nav</div>
+                        <div className={`cell-wall`} style={{background:'#F3F5F7'}}>
+                            <div className='cell-membrane text-center'>
                                 <h2 className={`${classes.orange} h1-responsive font-weight-bold my-3`}>
                                     What MyEdMaster Can Do?
                                 </h2>
@@ -186,6 +177,96 @@ class HomePageReact extends React.Component {
                                 >
                                     MyEdMaster was amazing. There was so much personal attention for each student even when in a group class. The instructors were very personable and helpful!... - Akila P.,
                                 </p>
+                            </div>
+                        </div>
+                        <div className={`cell-wall`} style={{background:'#7e57c2'}}>
+                            <div className='cell-membrane text-center'>
+                                <MDBRow className='py-5'>
+                                    <MDBCol
+                                        md="4"
+                                        className={classes.content}
+                                    >
+                                        <MDBIcon icon="book-open" size="3x" className="mt-2" style={{color:'#E41A6A'}}/>
+                                        <h4 className="font-weight-bold my-4" style={{fontFamily:'Comic Sans MS',color:'#E41A6A'}}>Reading</h4>
+                                        <p
+                                            className={classes.reading}
+
+                                            onClick={() => {this.props.history.push('/rrh/cover');}}
+                                        >
+                                            <span className={classes.font1}>Story 1: Little Red Riding Hood</span>
+                                        </p>
+                                        <p
+                                            className={classes.reading}
+
+                                            onClick={() => {this.props.history.push('/hapcover');}}
+                                        >
+                                            <span className={classes.font1}>Story 2: Horse and Porcupine</span>
+                                        </p>
+                                        <p className={classes.font2}>
+                                            Expect more in the future...
+                                        </p>
+                                    </MDBCol>
+                                    <MDBCol
+                                        md="4"
+                                        className={classes.content}
+                                    >
+                                        <MDBIcon icon="square-root-alt" size="3x" className="mt-2" style={{color:'#F1831D'}}/>
+                                        <h4 className="font-weight-bold my-4" style={{fontFamily:'Comic Sans MS',color:'#F1831D'}}>Math</h4>
+                                        <p
+                                            className={classes.math}
+
+                                            onClick={() => {this.props.history.push('/complex');}}
+                                        >
+                                            <span className={classes.font1}>Learn the complex numbers</span>
+
+                                        </p>
+                                        <p
+                                            className={classes.math}
+
+                                            onClick={() => {this.props.history.push('/function');}}
+                                        >
+                                            <span className={classes.font1}>Learn the function</span>
+
+                                        </p>
+                                        <p className={classes.font2}>
+                                            Expect more in the future...
+                                        </p>
+                                    </MDBCol>
+                                    <MDBCol md="4" className={classes.content}>
+                                        <MDBIcon icon="atom" size="3x" className="mt-2" style={{color:'#2EAFB0'}} />
+                                        <h4 className="font-weight-bold my-4" style={{fontFamily:'Comic Sans MS',color:'#2EAFB0'}}>Science</h4>
+                                        <p
+                                            className={classes.science}
+
+                                            // onClick={() => {this.props.history.push('/rrh/cover');}}
+                                        >
+                                            {/*<span className={classes.font1}>Play Basketball</span>*/}
+
+                                        </p>
+                                        <p className={classes.font2}>
+                                            Expect more in the future...
+                                        </p>
+                                    </MDBCol>
+                                </MDBRow>
+                            </div>
+                        </div>
+
+                        <MDBContainer>
+                            <section className="text-center my-5">
+
+                                {/*<h2 className={`${classes.orange} h1-responsive font-weight-bold my-3`}>*/}
+                                    {/*What MyEdMaster Can Do?*/}
+                                {/*</h2>*/}
+                                {/*<p*/}
+                                    {/*className={`${classes.font} lead w-responsive mx-auto mb-5`}*/}
+                                    {/*style={{*/}
+                                        {/*color:'#7F2B82',*/}
+                                        {/*fontSize:'22px',*/}
+                                        {/*fontWeight:'bold'*/}
+                                    {/*}}*/}
+                                {/*>*/}
+                                    {/*MyEdMaster was amazing. There was so much personal attention for each student even when in a group class. The instructors were very personable and helpful!... - Akila P.,*/}
+                                {/*</p>*/}
                                 <MDBRow>
                                     <MDBCol
                                         md="4"
@@ -228,9 +309,9 @@ class HomePageReact extends React.Component {
                                         <p
                                             className={classes.math}
 
-                                            onClick={() => {this.props.history.push('/foil');}}
+                                            onClick={() => {this.props.history.push('/function');}}
                                         >
-                                            <span className={classes.font1}>Multiplying Binomials Using FOIL</span>
+                                            <span className={classes.font1}>Learn the function</span>
 
                                         </p>
                                         <p className={classes.font2}>
@@ -264,4 +345,4 @@ class HomePageReact extends React.Component {
         );
     }
 }
-export const HomePage = withRouter(HomePageReact)
+export const HomePage2 = withRouter(HomePageReact)

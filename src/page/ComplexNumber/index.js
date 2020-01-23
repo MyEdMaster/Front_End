@@ -26,38 +26,6 @@ export class ComplexNumber extends React.Component {
         return (
           <div>
               <Nav/>
-              {/*<div className={classes.float}>*/}
-                  {/*<div*/}
-                      {/*className={this.props.location.pathname.indexOf('/complex/home') > -1? classes.selectmenubar: classes.menubar}*/}
-                      {/*onClick={() => {this.props.history.push('/complex/home');}}*/}
-                  {/*>*/}
-                      {/*Complex Number*/}
-                  {/*</div>*/}
-                  {/*<div*/}
-                      {/*className={this.props.location.pathname.indexOf('/complex/page1') > -1? classes.selectmenubar: classes.menubar}*/}
-                      {/*onClick={() => {this.props.history.push('/complex/page1');}}*/}
-                  {/*>*/}
-                      {/*Lesson 1: What is i?*/}
-                  {/*</div>*/}
-                  {/*<div*/}
-                      {/*className={this.props.location.pathname.indexOf('/complex/page2') > -1? classes.selectmenubar: classes.menubar}*/}
-                      {/*onClick={() => {this.props.history.push('/complex/page2');}}*/}
-                  {/*>*/}
-                      {/*Lesson 2: Addition*/}
-                  {/*</div>*/}
-                  {/*<div*/}
-                      {/*className={this.props.location.pathname.indexOf('/complex/page3') > -1? classes.selectmenubar: classes.menubar}*/}
-                      {/*onClick={() => {this.props.history.push('/complex/page3');}}*/}
-                  {/*>*/}
-                      {/*Lesson 3: Division*/}
-                  {/*</div>*/}
-                  {/*<div*/}
-                      {/*className={this.props.location.pathname.indexOf('/complex/feedback') > -1? classes.selectmenubar: classes.menubar}*/}
-                      {/*onClick={() => {this.props.history.push('/complex/feedback');}}*/}
-                  {/*>*/}
-                      {/*Q & A*/}
-                  {/*</div>*/}
-              {/*</div>*/}
               <AskQuestionComplex/>
               <Switch>
 

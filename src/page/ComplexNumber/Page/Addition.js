@@ -6,6 +6,7 @@ import { InlineMath, BlockMath } from 'react-katex';
 import classes from './index.module.css'
 import {ComplexNumberMenu} from "./Menu";
 import {url} from "../../../tool/fetch-help";
+import {deleteMark} from "../../../tool/delete-mark";
 import Joyride from 'react-joyride';
 
 
@@ -44,8 +45,10 @@ export class ComplexAdd extends React.Component {
                 }
             ]
         };
+        this.mark = deleteMark(this.state.a, this.state.b, this.state.c, this.state.d)
 
     }
+
     componentDidMount() {
         this.node.scrollIntoView();
     }
@@ -110,6 +113,7 @@ export class ComplexAdd extends React.Component {
             })
     }
 
+
     render() {
         const { run,steps } = this.state;
         return (
@@ -140,18 +144,18 @@ export class ComplexAdd extends React.Component {
                 </div>
 
                 <MDBRow>
-                    <MDBCol size="3">
+                    <MDBCol size="2">
                         <ComplexNumberMenu/>
                     </MDBCol>
-                    <MDBCol size="6" className={classes.font3}>
+                    <MDBCol size="8" className={classes.font3}>
                         <Video url='https://myedmaster.oss-us-east-1.aliyuncs.com/addcomplex.mp4'/>
                     </MDBCol>
                 </MDBRow>
                 <MDBRow>
-                    <MDBCol size="3">
+                    <MDBCol size="2">
 
                     </MDBCol>
-                    <MDBCol size="6">
+                    <MDBCol size="8">
                         <p className={classes.ph}>
                             Adding <span className={classes.high}>complex numbers</span> is actually rather straightforward and simple.
                             <br/>
@@ -239,7 +243,7 @@ export class ComplexAdd extends React.Component {
                                 style={{borderStyle:'solid',borderBottomColor:'#9e9e9e', borderWidth:'0 0 1px 0'}}
                             >
                                 Solve the following:
-                                ({this.state.a} + {this.state.b}i) + ({this.state.c} + {this.state.d}i).
+                                ({this.state.a} {this.mark[0]} {this.mark[1]}i) + ({this.state.c} {this.mark[2]} {this.mark[3]}i).
                                 Begin your work by first rewriting the problem in 'Step 1' in the worksheet.
                                 <tr/><br/>
                             </p>

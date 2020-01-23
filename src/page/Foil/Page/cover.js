@@ -5,9 +5,10 @@ import {MDBRow, MDBCol,MDBBtn} from 'mdbreact'
 import classes from './index.module.css'
 import {InlineMath} from "react-katex";
 import {ComplexNumberMenu} from "./Menu";
+import {deleteMark} from "../../../tool/delete-mark";
 
 
-export class ComplexHome extends React.Component {
+export class FoilHome extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -15,6 +16,7 @@ export class ComplexHome extends React.Component {
             render:0
 
         };
+        this.mark = deleteMark(this.state.a, this.state.b, this.state.c, this.state.d)
     }
 
     render() {
@@ -25,14 +27,13 @@ export class ComplexHome extends React.Component {
                     A-List Empire:
                 </div>
                 <div className={classes.font2}>
-                    Complex Numbers Online Textbook
+                    Multiplying Binomials Using FOIL
                 </div>
                 <MDBRow>
                     <MDBCol size="2">
-                        <ComplexNumberMenu/>
                     </MDBCol>
                     <MDBCol size="8" className={classes.font3}>
-                        Welcome to the A-List Empire Complex Number Textbook Module. In this module, you will have the opportunity to learn about the various properties of complex numbers.
+                        Welcome to the A-List Empire Multiplying Binomials Using FOIL Module. In this module, you will have the opportunity to learn about the various properties of foil.
                     </MDBCol>
                 </MDBRow>
                 <MDBRow>
@@ -41,7 +42,7 @@ export class ComplexHome extends React.Component {
                     </MDBCol>
                     <MDBCol size="6" className={classes.border}>
                         <div className={classes.euq}>
-                            <InlineMath>a + bi</InlineMath>
+                            <InlineMath>(ax + b)(cx + d)</InlineMath>
                         </div>
                     </MDBCol>
                 </MDBRow>
@@ -58,7 +59,7 @@ export class ComplexHome extends React.Component {
                         <MDBBtn
                             color="deep-purple lighten-1"
                             className={`${classes.btn} w-100 mt-3`}
-                            onClick={() => {this.props.history.push('/complex/intro');}}
+                            onClick={() => {this.props.history.push('/foil/page');}}
                         >Start Learning</MDBBtn>
                     </MDBCol>
                 </MDBRow>

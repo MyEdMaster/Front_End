@@ -8,6 +8,8 @@ import {ComplexNumberMenu} from "./Menu";
 import {url} from "../../../tool/fetch-help";
 import Joyride from 'react-joyride';
 import {deleteMark} from "../../../tool/delete-mark";
+import {hap} from "../../HAP/index.mock";
+import {FuncDraw} from "../../Function/Graph";
 
 
 export class FoilPage extends React.Component {
@@ -26,6 +28,8 @@ export class FoilPage extends React.Component {
             isRight:true,
             finish:false,
             finishText:'',
+            select:'1',
+            equation:'',
 
             steps: [
                 {
@@ -46,12 +50,17 @@ export class FoilPage extends React.Component {
             ]
         };
         this.mark = deleteMark(this.state.a, this.state.b, this.state.c, this.state.d)
+        this.str =''
+        this.neq = this.handle()
+
 
     }
     componentDidMount() {
         this.node.scrollIntoView();
     }
-
+    componentDidUpdate(prevProps) {
+        this.mark = deleteMark(this.state.a, this.state.b, this.state.c, this.state.d)
+    }
     toggle = nr => () => {
         let modalNumber = 'modal' + nr;
         this.setState({
@@ -59,7 +68,7 @@ export class FoilPage extends React.Component {
         });
     };
 
-    post = ()=>{
+    post = (value)=>{
         const option={
             method:'POST',
             headers: {
@@ -74,7 +83,7 @@ export class FoilPage extends React.Component {
                 "answer":this.state.value,
             })
         };
-        fetch(`${url}/FOIL/1`,option)
+        fetch(`${url}/FOIL/${value}`,option)
             .then(response=>response.json())
             .then(answer=>{
                 this.setState({
@@ -111,9 +120,58 @@ export class FoilPage extends React.Component {
                 }
             })
     }
+    handle = (value) =>{
+        switch (value) {
+            case '1':
+                let arr = new Array();
+                arr.push(' ');
+                arr.push('(');
+                arr.push(this.state.a);
+                arr.push('x');
+                arr.push(this.mark[0]);
+                arr.push(this.mark[1]);
+                arr.push(')');
+                arr.push('(');
+                arr.push(this.state.c);
+                arr.push('x');
+                arr.push(this.mark[2]);
+                arr.push(this.mark[3]);
+                arr.push(')');
+                arr.push(' ');
+                let str = arr.join("");
+                this.setState({
+                    equation:str
+                });
+                break;
+            case '2':
+                let arr2 = new Array();
+                arr2.push(' ');
+                arr2.push('(');
+                arr2.push(this.state.a);
+                arr2.push('x');
+                arr2.push(this.mark[0]);
+                arr2.push(this.mark[1]);
+                arr2.push('y');
+                arr2.push(')');
+                arr2.push('(');
+                arr2.push(this.state.c);
+                arr2.push('x');
+                arr2.push(this.mark[2]);
+                arr2.push(this.mark[3]);
+                arr2.push(')');
+                arr2.push(' ');
+                let str2 = arr2.join("");
+                this.setState({
+                    equation:str2
+                });
+        }
+
+    };
 
     render() {
         const { run,steps } = this.state;
+        console.log(this.state.select);
+        console.log(this.str);
         return (
             <div ref={node => this.node = node}>
                 <Joyride
@@ -304,25 +362,6 @@ export class FoilPage extends React.Component {
 
 
                         </p>
-                        <MDBRow className={classes.border} center>
-                            < div className={`${classes.ph2} d-flex justify-content-between`}>
-                                <div style={{textAlign:'left'}}>
-                                    <BlockMath>1.(x+4)(x+2)</BlockMath>
-                                    <BlockMath>2.	(2x-1)(3x+4)</BlockMath>
-
-                                    <BlockMath>3.	(x+y)(5x-1)</BlockMath>
-
-                                    <BlockMath>4.	(3x-5)(3x+5)</BlockMath>
-                                </div>
-                                <div style={{textAlign:'left'}}>
-                                    <BlockMath>5. (2xy-3)(xy-2)</BlockMath>
-                                    <BlockMath>6. (8x-3)(8x+3)</BlockMath>
-                                    <BlockMath>7. (x^2+4)(x2+7)</BlockMath>
-                                    <BlockMath>8. (-2x^2y^2-5xy^2)(-x+3)</BlockMath>
-                                </div>
-
-                            </div>
-                        </MDBRow>
                         <div className="problem"></div>
                         <MDBRow center>
                             <MDBCol className="add">
@@ -333,17 +372,37 @@ export class FoilPage extends React.Component {
                                     className="py-3 px-3 w-100"
                                     style={{boxShadow:'none', borderRadius:'0'}}
                                 >
+                                    <div className='d-flex justify-content-between'>
+                                        <div className={`${classes.pb}`}>Problem</div>
+                                        <div className='mr-3'>
+                                            <select
+                                                className="browser-default"
+                                                size = 'sm'
+                                                onChange={(e)=>{
+                                                    this.handle(e.target.value);
+                                                    this.setState({
+                                                        // equation:this.str,
+                                                        select:e.target.value
+                                                    });
+                                                }}
+                                            >
+                                                <option>Choose your format</option>
+                                                <option value="1">(ax+b)(cx+d)</option>
+                                                <option value="2">(ax+by)(cx+d)</option>
+                                            </select>
+                                        </div>
+                                    </div>
 
 
-                                    <p className={`${classes.pb}`}>Problem</p>
+
 
                                     <p
                                         className={`${classes.pb2}`}
                                         style={{borderStyle:'solid',borderBottomColor:'#9e9e9e', borderWidth:'0 0 1px 0'}}
                                     >
                                         Solve the following:
-                                        ({this.state.a}x {this.mark[0]} {this.mark[1]}) + ({this.state.c}x {this.mark[2]} {this.mark[3]})
-                                        Begin your work by first rewriting the problem in 'Step 1' in the worksheet.
+                                        {this.state.equation}
+                                        Begin your work by first rewriting the problem in 'Step1' in the worksheet.
                                         <tr/><br/>
                                     </p>
                                     <p
@@ -376,7 +435,7 @@ export class FoilPage extends React.Component {
                                                 fontWeight:'bolder'
                                             }}
                                         >
-                                            Add your own problem in the form (ax + b) + (cx + d). You can set the values of a, b, c, and d below.
+                                            Add your own problem in the chosen format. You can set the values of a, b, c, and d below.
                                         </div>
                                         <div className="d-flex justify-content-between">
                                             <MDBInput
@@ -431,11 +490,13 @@ export class FoilPage extends React.Component {
                                             className="orange accent-2"
                                             size="md"
                                             onClick={()=>{
+                                                this.handle(this.state.select);
                                                 this.setState({
+                                                    // equation:this.str,
                                                     modal14:false,
                                                     answers:[],
                                                     finish:false,
-                                                    step:1
+                                                    step:1,
                                                 })
                                             }}
                                             style={{
@@ -512,7 +573,7 @@ export class FoilPage extends React.Component {
                                             <div className="ml-4">
                                                 <MDBBtn
                                                     tag="a" floating className=" green lighten-2 m-0"
-                                                    onClick={()=>{this.post()}}
+                                                    onClick={()=>{this.post(this.state.select)}}
                                                 >
                                                     <MDBIcon icon="clipboard-check" />
                                                 </MDBBtn>

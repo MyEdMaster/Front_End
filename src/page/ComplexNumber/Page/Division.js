@@ -51,6 +51,9 @@ export class ComplexDivi extends React.Component {
     componentDidMount() {
         this.node.scrollIntoView();
     }
+    componentDidUpdate(prevProps) {
+        this.mark = deleteMark(this.state.a, this.state.b, this.state.c, this.state.d)
+    }
     toggle = nr => () => {
         let modalNumber = 'modal' + nr
         this.setState({

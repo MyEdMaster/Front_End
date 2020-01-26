@@ -574,7 +574,7 @@ export class AskQuestion extends React.Component {
                                             onClick={()=>{
                                                 this.setState({
                                                     tag:1,
-                                                    hint:'',
+                                                    hints:'',
                                                     answer:this.state.backend.answer1
                                                 })
                                                 handleSyn(this.state.backend.answer1)

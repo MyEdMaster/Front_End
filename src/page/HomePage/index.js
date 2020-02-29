@@ -98,6 +98,7 @@ class HomePageReact extends React.Component {
                             >
                                 <MDBSideNavItem className={classes.subMenu} onClick={() => {this.props.history.push('/complex');}}>Complex Numbers</MDBSideNavItem>
                                 <MDBSideNavItem className={classes.subMenu} onClick={() => {this.props.history.push('/foil');}}>Multiplying Binomials Using FOIL</MDBSideNavItem>
+                                <MDBSideNavItem className={classes.subMenu} onClick={() => {this.props.history.push('/combining_like_term');}}>Combining Like Term</MDBSideNavItem>
 
 
                             </MDBSideNavCat>
@@ -131,7 +132,7 @@ class HomePageReact extends React.Component {
                                         onClick={this.handleToggleClickA}
                                         key="sideNavToggleA"
                                         style={{
-                                            lineHeight: "40px",
+                                            lineHeight: "10px",
                                             marginRight: "1em",
                                             verticalAlign: "middle"
                                         }}
@@ -154,7 +155,7 @@ class HomePageReact extends React.Component {
                                     //     fontWeight: '700',
                                     // }}
                                 >
-                                    <img className='img-fluid' style={{height:'48px'}} src='https://myedmaster.oss-us-east-1.aliyuncs.com/A-list Empire logo.png'/>
+                                    <img className='img-fluid' style={{height:'44px'}} src='https://myedmaster.oss-us-east-1.aliyuncs.com/A-list Empire logo.png'/>
                                 </MDBNavItem>
                             </MDBNavbarNav>
                         </MDBCollapse>
@@ -167,7 +168,7 @@ class HomePageReact extends React.Component {
                         overlay="white-light"
 
                     >
-                        <div style={{height:'62.5px'}}>
+                        <div style={{height:'54px'}}>
 
                         </div>
 
@@ -233,6 +234,15 @@ class HomePageReact extends React.Component {
                                             <span className={classes.font1}>Multiplying Binomials Using FOIL</span>
 
                                         </p>
+                                        <p
+                                            className={classes.math}
+
+                                            onClick={() => {this.props.history.push('/combining_like_term');}}
+                                        >
+                                            <span className={classes.font1}>Combining Like Terms</span>
+
+                                        </p>
+
                                         <p className={classes.font2}>
                                             Expect more in the future...
                                         </p>
@@ -240,14 +250,14 @@ class HomePageReact extends React.Component {
                                     <MDBCol md="4" className={classes.content}>
                                         <MDBIcon icon="atom" size="3x" className="mt-2" style={{color:'#2EAFB0'}} />
                                         <h4 className="font-weight-bold my-4" style={{fontFamily:'Comic Sans MS',color:'#2EAFB0'}}>Science</h4>
-                                        <p
-                                            className={classes.science}
+                                        {/*<p*/}
+                                            {/*className={classes.science}*/}
 
-                                            // onClick={() => {this.props.history.push('/rrh/cover');}}
-                                        >
-                                            {/*<span className={classes.font1}>Play Basketball</span>*/}
+                                            {/*onClick={() => {this.props.history.push('/problem_list');}}*/}
+                                        {/*>*/}
+                                            {/*<span className={classes.font1}>test-add-math</span>*/}
 
-                                        </p>
+                                        {/*</p>*/}
                                         <p className={classes.font2}>
                                             Expect more in the future...
                                         </p>

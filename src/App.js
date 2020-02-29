@@ -14,6 +14,11 @@ import {HapPage} from "./page/HAP";
 import {HapCover} from "./page/HAP/cover";
 import {HomePage2} from "./page/HomePage2";
 import {Foil} from "./page/Foil";
+import {FoilPage} from "./page/ComplexNumber/Page/foil_study";
+import {Clt} from "./page/Clt";
+// import {ProblemList} from "./CRUD_module/problem_list"
+// import {ProblemDetail} from "./CRUD_module/problem_detail";
+
 
 export class App extends Component {
     render() {
@@ -21,33 +26,8 @@ export class App extends Component {
             <Route>
                 <Switch>
                     <Route
-                        path="/home"
-                        component={routeProps => <HomePage {...routeProps} />}
-                    />
-                    <Route
-                        path="/test"
-                        component={routeProps => <TestPage {...routeProps} />}
-                    />
-
-                    <Route
-                        path="/rrh"
-                        component={routeProps => <RRH {...routeProps} />}
-                    />
-                    <Route
-                        path="/h2"
-                        component={routeProps => <HomePage2 {...routeProps} />}
-                    />
-                    <Route
-                        path="/rrh2/:id"
-                        component={routeProps => <RrhPage {...routeProps} />}
-                    />
-                    <Route
-                        path="/hap/:id"
-                        component={routeProps => <HapPage {...routeProps} />}
-                    />
-                    <Route
-                        path="/hapcover"
-                        component={routeProps => <HapCover {...routeProps} />}
+                        path="/combining_like_term"
+                        component={routeProps => <Clt {...routeProps} />}
                     />
                     <Route
                         path="/complex"
@@ -60,6 +40,48 @@ export class App extends Component {
                     <Route
                         path="/foil"
                         component={routeProps => <Foil {...routeProps} />}
+                    />
+                    <Route
+                        path="/foil_study"
+                        component={routeProps => <FoilPage {...routeProps} />}
+                    />
+                    <Route
+                        path="/hap/:id"
+                        component={routeProps => <HapPage {...routeProps} />}
+                    />
+                    <Route
+                        path="/hapcover"
+                        component={routeProps => <HapCover {...routeProps} />}
+                    />
+                    <Route
+                        path="/home"
+                        component={routeProps => <HomePage {...routeProps} />}
+                    />
+                    <Route
+                        path="/h2"
+                        component={routeProps => <HomePage2 {...routeProps} />}
+                    />
+                    {/*<Route*/}
+                        {/*path="/problem_list"*/}
+                        {/*component={routeProps => <ProblemList {...routeProps} />}*/}
+                    {/*/>*/}
+                    {/*<Route*/}
+                        {/*path="/problem/:id"*/}
+                        {/*component={routeProps => <ProblemDetail {...routeProps} />}*/}
+                    {/*/>*/}
+                    <Route
+                        path="/rrh"
+                        component={routeProps => <RRH {...routeProps} />}
+                    />
+
+                    <Route
+                        path="/rrh2/:id"
+                        component={routeProps => <RrhPage {...routeProps} />}
+                    />
+
+                    <Route
+                        path="/test"
+                        component={routeProps => <TestPage {...routeProps} />}
                     />
                     <Redirect to="/home"/>
                 </Switch>

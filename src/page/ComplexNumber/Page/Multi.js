@@ -28,14 +28,14 @@ export class ComplexMult extends React.Component {
 
             steps: [
                 {
-                    target: ".problem",
+                    target: ".problem_list",
                     placement: 'bottom',
-                    content: "Here is a complex number problem"
+                    content: "Here is a complex number problem_list"
                 },
                 {
                     target: ".add",
                     placement: 'bottom',
-                    content: "You can add your own problem"
+                    content: "You can add your own problem_list"
                 },
                 {
                     target: ".submit",

@@ -1,0 +1,10 @@
+.param {
+    position: relative;
+    /*width: 50%;*/
+    height: auto;
+    border: 1px solid #F0F3FA;
+    padding: 1vw;
+    background: #FAFBFD;
+    /*display: flex;*/
+    /*justify-content: space-around;*/
+}

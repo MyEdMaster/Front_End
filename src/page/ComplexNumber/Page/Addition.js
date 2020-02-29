@@ -5,6 +5,7 @@ import { InlineMath, BlockMath } from 'react-katex';
 
 import classes from './index.module.css'
 import {ComplexNumberMenu} from "./Menu";
+import {addurl} from "../../../tool/fetch-help";
 import {url} from "../../../tool/fetch-help";
 import {deleteMark} from "../../../tool/delete-mark";
 import Joyride from 'react-joyride';
@@ -29,14 +30,14 @@ export class ComplexAdd extends React.Component {
 
             steps: [
                 {
-                    target: ".problem",
+                    target: ".problem_list",
                     placement: 'bottom',
-                    content: "Here is a complex number problem"
+                    content: "Here is a complex number problem_list"
                 },
                 {
                     target: ".add",
                     placement: 'bottom',
-                    content: "You can add your own problem"
+                    content: "You can add your own problem_list"
                 },
                 {
                     target: ".submit",

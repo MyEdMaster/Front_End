@@ -1,8 +1,7 @@
 import React from 'react';
 import {Redirect, Route, Switch} from 'react-router-dom';
 import {Nav} from "../Nav";
-import {FoilHome} from "./Page/cover";
-import {FoilPage} from "./Page/page";
+import {FoilPage} from "./Page";
 
 
 export class Foil extends React.Component {

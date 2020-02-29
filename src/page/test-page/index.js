@@ -15,12 +15,12 @@ export class TestPage extends React.Component {
             //     {
             //         target: ".p1",
             //         placement: 'top',
-            //         content: "Here is a complex number problem"
+            //         content: "Here is a complex number problem_list"
             //     },
             //     {
             //         target: ".p2",
             //         placement: 'top',
-            //         content: "You can add your own problem"
+            //         content: "You can add your own problem_list"
             //     },
             //     {
             //         target: ".p3",

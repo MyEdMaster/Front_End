@@ -1,0 +1,19 @@
+.Card {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-top: 1vw;
+    border: 1px solid #F0F3FA;
+    padding: 1vw;
+    background: #FAFBFD;
+}
+.param {
+    position: relative;
+    /*width: 50%;*/
+    height: auto;
+    border: 1px solid #F0F3FA;
+    padding: 1vw;
+    background: #FAFBFD;
+    /*display: flex;*/
+    /*justify-content: space-around;*/
+}

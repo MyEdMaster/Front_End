@@ -15,6 +15,7 @@ export class ComplexDivi extends React.Component {
         super(props);
         this.state = {
             modal14: false,
+            modal15:false,
             answers:[],
             a:'-6',
             b:'-4',
@@ -29,14 +30,14 @@ export class ComplexDivi extends React.Component {
 
             steps: [
                 {
-                    target: ".problem",
+                    target: ".problem_list",
                     placement: 'bottom',
-                    content: "Here is a complex number problem"
+                    content: "Here is a complex number problem_list"
                 },
                 {
                     target: ".add",
                     placement: 'bottom',
-                    content: "You can add your own problem"
+                    content: "You can add your own problem_list"
                 },
                 {
                     target: ".submit",
@@ -45,7 +46,8 @@ export class ComplexDivi extends React.Component {
                 }
             ]
         };
-        this.mark = deleteMark(this.state.a, this.state.b, this.state.c, this.state.d)
+        this.mark = deleteMark(this.state.a, this.state.b, this.state.c, this.state.d);
+        this.foil_counter = 0
 
     }
     componentDidMount() {
@@ -55,7 +57,7 @@ export class ComplexDivi extends React.Component {
         this.mark = deleteMark(this.state.a, this.state.b, this.state.c, this.state.d)
     }
     toggle = nr => () => {
-        let modalNumber = 'modal' + nr
+        let modalNumber = 'modal' + nr;
         this.setState({
             [modalNumber]: !this.state[modalNumber],
         });
@@ -84,18 +86,28 @@ export class ComplexDivi extends React.Component {
         fetch(`${url}/complex_number/4`,option)
             .then(response=>response.json())
             .then(answer=>{
+                let str = answer.content;
+                let target = 'mixing up signs while multiplying';
                 this.setState({
                     hint:answer.content
-                })
+                });
                 if (answer.type === '0'){
                     this.setState({
                         isRight:false
                     })
+                    if(str.indexOf(target)>-1){
+                        this.foil_counter += 1;
+                        if(this.foil_counter > 1){
+                            this.setState({
+                                modal15:true
+                            })
+                        }
+                    }
                 }
                 else if (answer.type === '1'){
                     let arr = this.state.answers;
                     let step= answer.step;
-                    arr.push([step, this.state.value])
+                    arr.push([step, this.state.value]);
                     this.setState({
                         answers:arr,
                         step:step,
@@ -106,7 +118,7 @@ export class ComplexDivi extends React.Component {
                 else if(answer.type === '2'){
                     let arr = this.state.answers;
                     let step= answer.step;
-                    arr.push([step, this.state.value])
+                    arr.push([step, this.state.value]);
                     this.setState({
                         answers:arr,
                         step:step,
@@ -117,7 +129,7 @@ export class ComplexDivi extends React.Component {
                     })
                 }
             })
-    }
+    };
 
 
     render() {
@@ -140,9 +152,6 @@ export class ComplexDivi extends React.Component {
                         }
                     }}
                 />
-
-
-
                 <div className="d-flex align-items-baseline justify-content-center">
                     <div className={classes.title1}>
                         COMPLEX NUMBERS:
@@ -314,7 +323,6 @@ export class ComplexDivi extends React.Component {
                                 <BlockMath>(-7 + 4i)/(2 - 4i)</BlockMath>
                                 <BlockMath>(3 + 3i)/(-3 - 3i)</BlockMath>
                                 <BlockMath>(5 + i)/(4 - 5i)</BlockMath>
-
                             </p>
                         </MDBRow>
                     </MDBCol>
@@ -440,6 +448,64 @@ export class ComplexDivi extends React.Component {
                                         fontWeight:'bolder'
                                     }}
                                 >Set</MDBBtn>
+                            </MDBModalFooter>
+                        </MDBModal>
+                        <MDBModal isOpen={this.state.modal15} toggle={this.toggle(15)} size="md" centered>
+                            <div className="p-3">
+                                <div
+                                    toggle={this.toggle(15)}
+
+                                    style={{
+                                        fontFamily:'\'Roboto\',sans-serif',
+                                        fontSize:'28px',
+                                        fontWeight:'bolder',
+                                        color:'#ffab40'
+                                    }}
+                                >
+                                    Oops!
+                                </div>
+                                <div
+                                    toggle={this.toggle(15)}
+
+                                    style={{
+                                        fontFamily:'\'Roboto\',sans-serif',
+                                        fontSize:'20px',
+                                        fontWeight:'bolder'
+                                    }}
+                                >
+                                    This is a foundation knowledge: foil, do you want to study it now?
+                                </div>
+                            </div>
+
+                            <MDBModalFooter>
+                                <MDBBtn
+                                    color="deep-purple"
+                                    size="md"
+                                    onClick={this.toggle(15)}
+                                    style={{
+                                        fontFamily:'\'Roboto\',sans-serif',
+                                        fontSize:'12px',
+                                        fontWeight:'bolder'
+                                    }}
+                                >Cancel
+                                </MDBBtn>
+                                <MDBBtn
+                                    className="orange accent-2"
+                                    size="md"
+                                    onClick={()=>{
+                                        this.setState({
+                                            modal15:false,
+                                        });
+                                        this.props.history.push('/foil_study');
+
+                                    }}
+
+                                    style={{
+                                        fontFamily:'\'Roboto\',sans-serif',
+                                        fontSize:'12px',
+                                        fontWeight:'bolder'
+                                    }}
+                                >Learn</MDBBtn>
                             </MDBModalFooter>
                         </MDBModal>
 

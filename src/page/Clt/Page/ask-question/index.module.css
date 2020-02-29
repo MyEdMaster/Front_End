@@ -1,0 +1,170 @@
+.body{
+    background: #ffffcc;
+    font-family: 'Rajdhani', sans-serif;
+}
+.speechBorder{
+    /*border-style:solid;*/
+    /*border-width:1px;*/
+    /*border-color:#81c784;*/
+    /*border-radius:15px;*/
+    /*font-family:'Rajdhani', sans-serif;*/
+}
+.title{
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 30px;
+    color: #81c784;
+    text-align: center;
+    border-style: solid;
+    border-color: #81c784;
+    border-width: 0 0 1px 0;
+}
+.pb1{
+    font-family: 'Roboto',sans-serif ;
+    font-weight: bolder;
+    font-size: 24px;
+    color:white;
+    margin-top: 10px;
+    text-align: center;
+}
+.pb2{
+    font-family: 'Roboto',sans-serif ;
+    font-weight: bolder;
+    font-size: 18px;
+    color:white;
+    margin-top: 10px;
+    text-align: left;
+}
+.pb3{
+    font-family: 'Roboto',sans-serif ;
+    font-weight: bolder;
+    font-style:italic;
+    font-size: 22px;
+    color:white;
+    margin-top: 10px;
+    text-align: left;
+}
+.pb4{
+    /*background: white;*/
+    font-family: 'Roboto',sans-serif ;
+    font-weight: bolder;
+    font-size: 18px;
+    color:white;
+    margin-top: 10px;
+
+}
+.select-ques{
+    font-family: 'Roboto',sans-serif ;
+    font-weight: bolder;
+    font-size: 16px;
+    padding: 0 10px 0 10px;
+    color:#81c784;
+    background-color: white;
+    margin-top: 10px;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.select-ques:hover{
+    color:white;
+    background-color:#7e57c2;
+}
+.select-ques2{
+    font-family: 'Roboto',sans-serif ;
+    font-weight: bolder;
+    font-size: 16px;
+    padding: 0 10px 0 10px;
+    color:#7e57c2;
+    background-color: white;
+    margin-top: 10px;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.select-ques2:hover{
+    color:white;
+    background-color:#7e57c2;
+}
+.button {
+    display: inline-block;
+    height: 142px;
+    padding: 0;
+    margin: 0;
+    vertical-align: top;
+    width: 100px;
+    opacity: 1;
+    transition: 0.5s;
+}
+.btn{
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    background-color: #7e57c2;
+    border-radius: 10px;
+    text-align: center;
+}
+.btn:hover{
+    border-radius: 20px;
+    transition: all 0.2s ease-in-out;
+}
+.button:hover {background-color: #FFDC00}
+.button1 {
+    cursor: pointer;
+    background-color: #FF0000;
+    border: none;
+    color: white;
+    text-align: center;
+    padding: 0 10px;
+    margin: 0 5px;
+    vertical-align: center;
+    height: 20px;
+    width: auto;
+    opacity: 1;
+    transition: 0.5s;
+    border-radius: 10px;
+}
+.button1:hover {background-color: #FFDC00}
+.searchInput {
+    margin: 6px;
+    box-shadow: 1px 1px 1px #E3E7F5;
+    border-style:solid;
+    border-width:2px;
+    border-color: #27AEE3;
+}
+.searchInput:hover {
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    border-color: #eee;
+    transition: all 0.2s ease-in-out;
+}
+
+.a{
+    cursor: pointer;
+    background-color: #54B948;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+    margin: 0 5px;
+    border-radius: 20px;
+    transition: 0.5s;
+
+}
+
+.a:hover {
+    background-color: #27AEE3;
+    color: white;
+    padding: 25px 32px;
+    transition: padding 0.5s;
+}
+
+
+
+.fixed {
+    position: fixed;
+    bottom: 80%;
+    right: 0;
+}
+.fixed1{
+    position: fixed;
+    bottom: 50%;
+    right: 0;
+}
+
